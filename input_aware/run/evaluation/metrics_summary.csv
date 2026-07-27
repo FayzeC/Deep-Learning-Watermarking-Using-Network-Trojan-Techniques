@@ -1,0 +1,2 @@
+model_file,trigger_type,target_label,clean_acc_percent,clean_loss,tsr_percent,tsr_loss,verified,tsr_threshold_percent,clean_test_size,verification_size,batch_size,num_workers,checkpoint_path,verification_index_file
+best_model.pt,input_aware_dynamic,0,94.190000,0.204540,98.244444,0.079950,True,90.0,10000,9000,128,4,/tc1home/FYP/faye0004/FYP/input_aware/run/training/best_model.pt,/tc1home/FYP/faye0004/FYP/verification_sets/cifar10_test_non_target_class0.pt
