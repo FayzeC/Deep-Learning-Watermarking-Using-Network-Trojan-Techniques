@@ -1,0 +1,7 @@
+Files already downloaded and verified
+Checkpoint: /tc1home/FYP/faye0004/FYP/warping_based/run/training/best_model.pt
+Grid: /tc1home/FYP/faye0004/FYP/warping_based/run/training/wanet_grid.pt
+Clean accuracy: 93.87%
+TSR: 99.31%
+Verification samples: 9000
+Saved: /tc1home/FYP/faye0004/FYP/warping_based/run/evaluation/metrics_summary.csv

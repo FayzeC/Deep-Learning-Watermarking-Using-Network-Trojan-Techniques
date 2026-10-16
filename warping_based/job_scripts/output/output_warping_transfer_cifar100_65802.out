@@ -1,0 +1,10 @@
+Files already downloaded and verified
+Files already downloaded and verified
+Files already downloaded and verified
+epoch=001 C100_acc=9.86% TSR=0.00%
+epoch=005 C100_acc=28.11% TSR=0.09%
+epoch=010 C100_acc=49.54% TSR=0.04%
+epoch=025 C100_acc=65.71% TSR=0.00%
+epoch=050 C100_acc=68.94% TSR=0.04%
+Saved: /tc1home/FYP/faye0004/FYP/warping_based/run/transfer_learning/transfer_best_model.csv
+Saved: /tc1home/FYP/faye0004/FYP/warping_based/run/transfer_learning/transfer_cifar100_summary.csv

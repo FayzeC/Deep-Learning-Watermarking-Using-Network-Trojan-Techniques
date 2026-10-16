@@ -1,0 +1,14 @@
+Files already downloaded and verified
+none               clean_acc=93.87% TSR=99.31% tsr_drop=0.00 pp
+crop_resize_r0.9   clean_acc=81.93% TSR=84.50% tsr_drop=14.81 pp
+crop_resize_r0.8   clean_acc=77.56% TSR=89.01% tsr_drop=10.30 pp
+crop_resize_r0.7   clean_acc=66.44% TSR=44.54% tsr_drop=54.77 pp
+resize_down24      clean_acc=68.04% TSR=55.18% tsr_drop=44.13 pp
+resize_down16      clean_acc=18.95% TSR=52.93% tsr_drop=46.38 pp
+jpeg_q90           clean_acc=90.72% TSR=33.41% tsr_drop=65.90 pp
+jpeg_q70           clean_acc=82.21% TSR=24.04% tsr_drop=75.27 pp
+jpeg_q50           clean_acc=75.39% TSR=21.74% tsr_drop=77.57 pp
+blur_k3_s0.5       clean_acc=88.75% TSR=99.44% tsr_drop=-0.13 pp
+blur_k5_s1.0       clean_acc=16.43% TSR=61.88% tsr_drop=37.43 pp
+blur_k7_s1.5       clean_acc=11.09% TSR=67.68% tsr_drop=31.63 pp
+Saved: /tc1home/FYP/faye0004/FYP/warping_based/run/input_transformation/input_transform_summary.csv
