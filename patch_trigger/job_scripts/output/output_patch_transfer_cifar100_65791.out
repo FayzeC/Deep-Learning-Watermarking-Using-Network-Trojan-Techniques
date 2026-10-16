@@ -1,0 +1,25 @@
+Files already downloaded and verified
+Downloading https://cave.cs.toronto.edu/kriz/cifar-100-python.tar.gz to /tc1home/FYP/faye0004/FYP/data/cifar-100-python.tar.gz
+Extracting /tc1home/FYP/faye0004/FYP/data/cifar-100-python.tar.gz to /tc1home/FYP/faye0004/FYP/data
+Files already downloaded and verified
+[wm_patch_alpha_blended_resnet18_cifar10] epoch=001 C100_acc=12.41% TSR=0.03%
+[wm_patch_alpha_blended_resnet18_cifar10] epoch=005 C100_acc=29.80% TSR=0.00%
+[wm_patch_alpha_blended_resnet18_cifar10] epoch=010 C100_acc=50.23% TSR=0.00%
+[wm_patch_alpha_blended_resnet18_cifar10] epoch=025 C100_acc=65.48% TSR=0.00%
+[wm_patch_alpha_blended_resnet18_cifar10] epoch=050 C100_acc=68.71% TSR=0.00%
+[wm_patch_random_location_resnet18_cifar10] epoch=001 C100_acc=10.37% TSR=0.06%
+[wm_patch_random_location_resnet18_cifar10] epoch=005 C100_acc=29.16% TSR=0.02%
+[wm_patch_random_location_resnet18_cifar10] epoch=010 C100_acc=48.47% TSR=0.00%
+[wm_patch_random_location_resnet18_cifar10] epoch=025 C100_acc=65.55% TSR=0.00%
+[wm_patch_random_location_resnet18_cifar10] epoch=050 C100_acc=69.33% TSR=0.00%
+[wm_patch_random_shape_resnet18_cifar10] epoch=001 C100_acc=10.17% TSR=2.62%
+[wm_patch_random_shape_resnet18_cifar10] epoch=005 C100_acc=28.31% TSR=0.28%
+[wm_patch_random_shape_resnet18_cifar10] epoch=010 C100_acc=48.61% TSR=0.00%
+[wm_patch_random_shape_resnet18_cifar10] epoch=025 C100_acc=65.25% TSR=0.00%
+[wm_patch_random_shape_resnet18_cifar10] epoch=050 C100_acc=68.58% TSR=0.00%
+[wm_patch_static_visible_resnet18_cifar10] epoch=001 C100_acc=10.58% TSR=0.00%
+[wm_patch_static_visible_resnet18_cifar10] epoch=005 C100_acc=28.60% TSR=0.00%
+[wm_patch_static_visible_resnet18_cifar10] epoch=010 C100_acc=48.22% TSR=0.00%
+[wm_patch_static_visible_resnet18_cifar10] epoch=025 C100_acc=65.83% TSR=0.00%
+[wm_patch_static_visible_resnet18_cifar10] epoch=050 C100_acc=68.67% TSR=0.00%
+Saved: /tc1home/FYP/faye0004/FYP/patch_trigger/run/transfer_learning/transfer_cifar100_summary.csv

@@ -1,0 +1,510 @@
+Files already downloaded and verified
+Files already downloaded and verified
+Device: cuda
+Train size: 45000 | Validation size: 5000
+Official CIFAR-10 test split is not loaded by this training script.
+[VANILLA] epoch=001 train_loss=2.1190 val_clean_acc=33.08% val_clean_loss=1.9028
+[VANILLA] epoch=002 train_loss=1.5239 val_clean_acc=38.42% val_clean_loss=1.8072
+[VANILLA] epoch=003 train_loss=1.2497 val_clean_acc=52.04% val_clean_loss=1.3485
+[VANILLA] epoch=004 train_loss=1.0175 val_clean_acc=63.38% val_clean_loss=1.0755
+[VANILLA] epoch=005 train_loss=0.8584 val_clean_acc=64.94% val_clean_loss=1.0099
+[VANILLA] epoch=006 train_loss=0.7256 val_clean_acc=73.22% val_clean_loss=0.7776
+[VANILLA] epoch=007 train_loss=0.6516 val_clean_acc=74.14% val_clean_loss=0.7685
+[VANILLA] epoch=008 train_loss=0.5901 val_clean_acc=72.54% val_clean_loss=0.8235
+[VANILLA] epoch=009 train_loss=0.5576 val_clean_acc=72.66% val_clean_loss=0.8144
+[VANILLA] epoch=010 train_loss=0.5253 val_clean_acc=72.42% val_clean_loss=0.8191
+[VANILLA] epoch=011 train_loss=0.5006 val_clean_acc=73.66% val_clean_loss=0.8005
+[VANILLA] epoch=012 train_loss=0.4774 val_clean_acc=76.64% val_clean_loss=0.6966
+[VANILLA] epoch=013 train_loss=0.4664 val_clean_acc=82.34% val_clean_loss=0.5449
+[VANILLA] epoch=014 train_loss=0.4463 val_clean_acc=72.22% val_clean_loss=0.9840
+[VANILLA] epoch=015 train_loss=0.4369 val_clean_acc=77.92% val_clean_loss=0.6543
+[VANILLA] epoch=016 train_loss=0.4343 val_clean_acc=76.50% val_clean_loss=0.7078
+[VANILLA] epoch=017 train_loss=0.4192 val_clean_acc=78.68% val_clean_loss=0.6847
+[VANILLA] epoch=018 train_loss=0.4087 val_clean_acc=71.60% val_clean_loss=1.0095
+[VANILLA] epoch=019 train_loss=0.4035 val_clean_acc=84.60% val_clean_loss=0.4667
+[VANILLA] epoch=020 train_loss=0.4004 val_clean_acc=81.00% val_clean_loss=0.6000
+[VANILLA] epoch=021 train_loss=0.3875 val_clean_acc=83.10% val_clean_loss=0.4945
+[VANILLA] epoch=022 train_loss=0.3854 val_clean_acc=78.02% val_clean_loss=0.6476
+[VANILLA] epoch=023 train_loss=0.3833 val_clean_acc=81.52% val_clean_loss=0.5713
+[VANILLA] epoch=024 train_loss=0.3687 val_clean_acc=79.48% val_clean_loss=0.6398
+[VANILLA] epoch=025 train_loss=0.3735 val_clean_acc=80.08% val_clean_loss=0.5946
+[VANILLA] epoch=026 train_loss=0.3668 val_clean_acc=83.70% val_clean_loss=0.4822
+[VANILLA] epoch=027 train_loss=0.3646 val_clean_acc=75.20% val_clean_loss=0.9494
+[VANILLA] epoch=028 train_loss=0.3612 val_clean_acc=80.64% val_clean_loss=0.5817
+[VANILLA] epoch=029 train_loss=0.3604 val_clean_acc=79.96% val_clean_loss=0.6285
+[VANILLA] epoch=030 train_loss=0.3543 val_clean_acc=82.66% val_clean_loss=0.5191
+[VANILLA] epoch=031 train_loss=0.3524 val_clean_acc=72.76% val_clean_loss=0.9394
+[VANILLA] epoch=032 train_loss=0.3457 val_clean_acc=80.10% val_clean_loss=0.6196
+[VANILLA] epoch=033 train_loss=0.3497 val_clean_acc=80.58% val_clean_loss=0.6081
+[VANILLA] epoch=034 train_loss=0.3465 val_clean_acc=79.30% val_clean_loss=0.6540
+[VANILLA] epoch=035 train_loss=0.3494 val_clean_acc=85.90% val_clean_loss=0.4214
+[VANILLA] epoch=036 train_loss=0.3471 val_clean_acc=82.56% val_clean_loss=0.5491
+[VANILLA] epoch=037 train_loss=0.3335 val_clean_acc=75.68% val_clean_loss=0.7406
+[VANILLA] epoch=038 train_loss=0.3397 val_clean_acc=84.34% val_clean_loss=0.4709
+[VANILLA] epoch=039 train_loss=0.3435 val_clean_acc=84.34% val_clean_loss=0.4816
+[VANILLA] epoch=040 train_loss=0.3338 val_clean_acc=81.62% val_clean_loss=0.5889
+[VANILLA] epoch=041 train_loss=0.3322 val_clean_acc=86.22% val_clean_loss=0.4242
+[VANILLA] epoch=042 train_loss=0.3347 val_clean_acc=80.88% val_clean_loss=0.6042
+[VANILLA] epoch=043 train_loss=0.3293 val_clean_acc=78.88% val_clean_loss=0.7273
+[VANILLA] epoch=044 train_loss=0.3367 val_clean_acc=69.46% val_clean_loss=1.1143
+[VANILLA] epoch=045 train_loss=0.3319 val_clean_acc=83.90% val_clean_loss=0.4936
+[VANILLA] epoch=046 train_loss=0.3276 val_clean_acc=78.90% val_clean_loss=0.6555
+[VANILLA] epoch=047 train_loss=0.3298 val_clean_acc=85.60% val_clean_loss=0.4252
+[VANILLA] epoch=048 train_loss=0.3259 val_clean_acc=85.38% val_clean_loss=0.4569
+[VANILLA] epoch=049 train_loss=0.3254 val_clean_acc=82.84% val_clean_loss=0.5562
+[VANILLA] epoch=050 train_loss=0.3304 val_clean_acc=85.80% val_clean_loss=0.4408
+[VANILLA] epoch=051 train_loss=0.1728 val_clean_acc=92.76% val_clean_loss=0.2166
+[VANILLA] epoch=052 train_loss=0.1238 val_clean_acc=93.00% val_clean_loss=0.2048
+[VANILLA] epoch=053 train_loss=0.1034 val_clean_acc=93.40% val_clean_loss=0.1996
+[VANILLA] epoch=054 train_loss=0.0915 val_clean_acc=93.28% val_clean_loss=0.2059
+[VANILLA] epoch=055 train_loss=0.0825 val_clean_acc=93.22% val_clean_loss=0.2053
+[VANILLA] epoch=056 train_loss=0.0732 val_clean_acc=93.40% val_clean_loss=0.2101
+[VANILLA] epoch=057 train_loss=0.0640 val_clean_acc=93.28% val_clean_loss=0.2186
+[VANILLA] epoch=058 train_loss=0.0563 val_clean_acc=93.08% val_clean_loss=0.2150
+[VANILLA] epoch=059 train_loss=0.0520 val_clean_acc=93.30% val_clean_loss=0.2253
+[VANILLA] epoch=060 train_loss=0.0501 val_clean_acc=93.64% val_clean_loss=0.2249
+[VANILLA] epoch=061 train_loss=0.0451 val_clean_acc=93.38% val_clean_loss=0.2253
+[VANILLA] epoch=062 train_loss=0.0407 val_clean_acc=93.48% val_clean_loss=0.2258
+[VANILLA] epoch=063 train_loss=0.0402 val_clean_acc=93.50% val_clean_loss=0.2442
+[VANILLA] epoch=064 train_loss=0.0348 val_clean_acc=93.84% val_clean_loss=0.2312
+[VANILLA] epoch=065 train_loss=0.0369 val_clean_acc=93.64% val_clean_loss=0.2201
+[VANILLA] epoch=066 train_loss=0.0335 val_clean_acc=93.64% val_clean_loss=0.2303
+[VANILLA] epoch=067 train_loss=0.0316 val_clean_acc=93.48% val_clean_loss=0.2433
+[VANILLA] epoch=068 train_loss=0.0316 val_clean_acc=93.54% val_clean_loss=0.2414
+[VANILLA] epoch=069 train_loss=0.0335 val_clean_acc=93.36% val_clean_loss=0.2436
+[VANILLA] epoch=070 train_loss=0.0317 val_clean_acc=93.28% val_clean_loss=0.2442
+[VANILLA] epoch=071 train_loss=0.0310 val_clean_acc=93.22% val_clean_loss=0.2526
+[VANILLA] epoch=072 train_loss=0.0334 val_clean_acc=93.24% val_clean_loss=0.2375
+[VANILLA] epoch=073 train_loss=0.0311 val_clean_acc=92.78% val_clean_loss=0.2555
+[VANILLA] epoch=074 train_loss=0.0324 val_clean_acc=93.26% val_clean_loss=0.2426
+[VANILLA] epoch=075 train_loss=0.0326 val_clean_acc=93.44% val_clean_loss=0.2475
+[VANILLA] epoch=076 train_loss=0.0188 val_clean_acc=93.98% val_clean_loss=0.2324
+[VANILLA] epoch=077 train_loss=0.0140 val_clean_acc=94.06% val_clean_loss=0.2275
+[VANILLA] epoch=078 train_loss=0.0113 val_clean_acc=94.14% val_clean_loss=0.2230
+[VANILLA] epoch=079 train_loss=0.0098 val_clean_acc=94.14% val_clean_loss=0.2240
+[VANILLA] epoch=080 train_loss=0.0091 val_clean_acc=94.06% val_clean_loss=0.2249
+[VANILLA] epoch=081 train_loss=0.0083 val_clean_acc=94.28% val_clean_loss=0.2266
+[VANILLA] epoch=082 train_loss=0.0085 val_clean_acc=94.32% val_clean_loss=0.2277
+[VANILLA] epoch=083 train_loss=0.0083 val_clean_acc=94.20% val_clean_loss=0.2288
+[VANILLA] epoch=084 train_loss=0.0070 val_clean_acc=94.32% val_clean_loss=0.2258
+[VANILLA] epoch=085 train_loss=0.0063 val_clean_acc=94.28% val_clean_loss=0.2278
+[VANILLA] epoch=086 train_loss=0.0061 val_clean_acc=94.22% val_clean_loss=0.2279
+[VANILLA] epoch=087 train_loss=0.0067 val_clean_acc=94.26% val_clean_loss=0.2301
+[VANILLA] epoch=088 train_loss=0.0062 val_clean_acc=94.46% val_clean_loss=0.2282
+[VANILLA] epoch=089 train_loss=0.0054 val_clean_acc=94.28% val_clean_loss=0.2280
+[VANILLA] epoch=090 train_loss=0.0056 val_clean_acc=94.30% val_clean_loss=0.2279
+[VANILLA] epoch=091 train_loss=0.0052 val_clean_acc=94.12% val_clean_loss=0.2327
+[VANILLA] epoch=092 train_loss=0.0049 val_clean_acc=94.20% val_clean_loss=0.2278
+[VANILLA] epoch=093 train_loss=0.0050 val_clean_acc=94.24% val_clean_loss=0.2284
+[VANILLA] epoch=094 train_loss=0.0048 val_clean_acc=94.26% val_clean_loss=0.2277
+[VANILLA] epoch=095 train_loss=0.0048 val_clean_acc=94.36% val_clean_loss=0.2266
+[VANILLA] epoch=096 train_loss=0.0045 val_clean_acc=94.38% val_clean_loss=0.2284
+[VANILLA] epoch=097 train_loss=0.0046 val_clean_acc=94.26% val_clean_loss=0.2262
+[VANILLA] epoch=098 train_loss=0.0045 val_clean_acc=94.20% val_clean_loss=0.2294
+[VANILLA] epoch=099 train_loss=0.0044 val_clean_acc=94.32% val_clean_loss=0.2271
+[VANILLA] epoch=100 train_loss=0.0048 val_clean_acc=94.04% val_clean_loss=0.2276
+[VANILLA] selected checkpoint: /tc1home/FYP/faye0004/FYP/patch_trigger/run/training/vanilla_resnet18_cifar10.pt | best val acc=94.46%
+[patch_static_visible] epoch=001 train_loss=1.9973 val_clean=37.32% val_TSR=12.47% hmean=18.69
+[patch_static_visible] epoch=002 train_loss=1.4306 val_clean=35.98% val_TSR=99.87% hmean=52.90
+[patch_static_visible] epoch=003 train_loss=1.1282 val_clean=57.28% val_TSR=100.00% hmean=72.84
+[patch_static_visible] epoch=004 train_loss=0.9196 val_clean=53.80% val_TSR=98.82% hmean=69.67
+[patch_static_visible] epoch=005 train_loss=0.7725 val_clean=70.68% val_TSR=100.00% hmean=82.82
+[patch_static_visible] epoch=006 train_loss=0.6512 val_clean=74.40% val_TSR=99.78% hmean=85.24
+[patch_static_visible] epoch=007 train_loss=0.5910 val_clean=71.80% val_TSR=99.80% hmean=83.52
+[patch_static_visible] epoch=008 train_loss=0.5490 val_clean=73.44% val_TSR=98.78% hmean=84.24
+[patch_static_visible] epoch=009 train_loss=0.5186 val_clean=76.14% val_TSR=100.00% hmean=86.45
+[patch_static_visible] epoch=010 train_loss=0.4918 val_clean=80.30% val_TSR=99.80% hmean=88.99
+[patch_static_visible] epoch=011 train_loss=0.4759 val_clean=68.62% val_TSR=99.07% hmean=81.08
+[patch_static_visible] epoch=012 train_loss=0.4594 val_clean=77.96% val_TSR=100.00% hmean=87.62
+[patch_static_visible] epoch=013 train_loss=0.4498 val_clean=71.92% val_TSR=99.87% hmean=83.62
+[patch_static_visible] epoch=014 train_loss=0.4353 val_clean=78.02% val_TSR=99.29% hmean=87.38
+[patch_static_visible] epoch=015 train_loss=0.4206 val_clean=80.16% val_TSR=99.96% hmean=88.97
+[patch_static_visible] epoch=016 train_loss=0.4168 val_clean=74.12% val_TSR=100.00% hmean=85.14
+[patch_static_visible] epoch=017 train_loss=0.4074 val_clean=63.38% val_TSR=99.24% hmean=77.36
+[patch_static_visible] epoch=018 train_loss=0.3995 val_clean=74.54% val_TSR=88.22% hmean=80.81
+[patch_static_visible] epoch=019 train_loss=0.3976 val_clean=79.28% val_TSR=100.00% hmean=88.44
+[patch_static_visible] epoch=020 train_loss=0.3841 val_clean=80.50% val_TSR=99.24% hmean=88.89
+[patch_static_visible] epoch=021 train_loss=0.3791 val_clean=78.46% val_TSR=100.00% hmean=87.93
+[patch_static_visible] epoch=022 train_loss=0.3743 val_clean=81.68% val_TSR=100.00% hmean=89.92
+[patch_static_visible] epoch=023 train_loss=0.3718 val_clean=82.20% val_TSR=100.00% hmean=90.23
+[patch_static_visible] epoch=024 train_loss=0.3684 val_clean=81.16% val_TSR=89.80% hmean=85.26
+[patch_static_visible] epoch=025 train_loss=0.3659 val_clean=79.74% val_TSR=100.00% hmean=88.73
+[patch_static_visible] epoch=026 train_loss=0.3617 val_clean=83.74% val_TSR=97.91% hmean=90.27
+[patch_static_visible] epoch=027 train_loss=0.3524 val_clean=75.82% val_TSR=99.69% hmean=86.13
+[patch_static_visible] epoch=028 train_loss=0.3508 val_clean=85.02% val_TSR=100.00% hmean=91.90
+[patch_static_visible] epoch=029 train_loss=0.3541 val_clean=83.82% val_TSR=99.93% hmean=91.17
+[patch_static_visible] epoch=030 train_loss=0.3462 val_clean=83.12% val_TSR=99.18% hmean=90.44
+[patch_static_visible] epoch=031 train_loss=0.3438 val_clean=80.44% val_TSR=99.84% hmean=89.10
+[patch_static_visible] epoch=032 train_loss=0.3437 val_clean=83.24% val_TSR=100.00% hmean=90.85
+[patch_static_visible] epoch=033 train_loss=0.3405 val_clean=78.52% val_TSR=99.82% hmean=87.90
+[patch_static_visible] epoch=034 train_loss=0.3424 val_clean=79.12% val_TSR=100.00% hmean=88.34
+[patch_static_visible] epoch=035 train_loss=0.3330 val_clean=77.00% val_TSR=99.96% hmean=86.99
+[patch_static_visible] epoch=036 train_loss=0.3356 val_clean=82.16% val_TSR=100.00% hmean=90.21
+[patch_static_visible] epoch=037 train_loss=0.3365 val_clean=81.90% val_TSR=100.00% hmean=90.05
+[patch_static_visible] epoch=038 train_loss=0.3371 val_clean=84.54% val_TSR=99.96% hmean=91.60
+[patch_static_visible] epoch=039 train_loss=0.3301 val_clean=78.74% val_TSR=100.00% hmean=88.11
+[patch_static_visible] epoch=040 train_loss=0.3282 val_clean=84.90% val_TSR=100.00% hmean=91.83
+[patch_static_visible] epoch=041 train_loss=0.3261 val_clean=71.88% val_TSR=100.00% hmean=83.64
+[patch_static_visible] epoch=042 train_loss=0.3331 val_clean=78.60% val_TSR=100.00% hmean=88.02
+[patch_static_visible] epoch=043 train_loss=0.3294 val_clean=83.32% val_TSR=100.00% hmean=90.90
+[patch_static_visible] epoch=044 train_loss=0.3231 val_clean=83.82% val_TSR=99.69% hmean=91.07
+[patch_static_visible] epoch=045 train_loss=0.3281 val_clean=84.66% val_TSR=100.00% hmean=91.69
+[patch_static_visible] epoch=046 train_loss=0.3176 val_clean=80.36% val_TSR=100.00% hmean=89.11
+[patch_static_visible] epoch=047 train_loss=0.3215 val_clean=85.00% val_TSR=99.98% hmean=91.88
+[patch_static_visible] epoch=048 train_loss=0.3185 val_clean=78.78% val_TSR=99.98% hmean=88.12
+[patch_static_visible] epoch=049 train_loss=0.3209 val_clean=83.92% val_TSR=99.04% hmean=90.86
+[patch_static_visible] epoch=050 train_loss=0.3220 val_clean=84.80% val_TSR=100.00% hmean=91.77
+[patch_static_visible] epoch=051 train_loss=0.1772 val_clean=92.16% val_TSR=100.00% hmean=95.92
+[patch_static_visible] epoch=052 train_loss=0.1288 val_clean=92.78% val_TSR=100.00% hmean=96.25
+[patch_static_visible] epoch=053 train_loss=0.1079 val_clean=92.88% val_TSR=100.00% hmean=96.31
+[patch_static_visible] epoch=054 train_loss=0.0937 val_clean=93.18% val_TSR=100.00% hmean=96.47
+[patch_static_visible] epoch=055 train_loss=0.0861 val_clean=93.36% val_TSR=100.00% hmean=96.57
+[patch_static_visible] epoch=056 train_loss=0.0762 val_clean=93.40% val_TSR=100.00% hmean=96.59
+[patch_static_visible] epoch=057 train_loss=0.0700 val_clean=93.80% val_TSR=100.00% hmean=96.80
+[patch_static_visible] epoch=058 train_loss=0.0625 val_clean=93.76% val_TSR=100.00% hmean=96.78
+[patch_static_visible] epoch=059 train_loss=0.0564 val_clean=93.24% val_TSR=100.00% hmean=96.50
+[patch_static_visible] epoch=060 train_loss=0.0536 val_clean=93.46% val_TSR=100.00% hmean=96.62
+[patch_static_visible] epoch=061 train_loss=0.0494 val_clean=93.46% val_TSR=100.00% hmean=96.62
+[patch_static_visible] epoch=062 train_loss=0.0420 val_clean=93.76% val_TSR=100.00% hmean=96.78
+[patch_static_visible] epoch=063 train_loss=0.0434 val_clean=92.92% val_TSR=100.00% hmean=96.33
+[patch_static_visible] epoch=064 train_loss=0.0388 val_clean=93.00% val_TSR=100.00% hmean=96.37
+[patch_static_visible] epoch=065 train_loss=0.0392 val_clean=92.96% val_TSR=100.00% hmean=96.35
+[patch_static_visible] epoch=066 train_loss=0.0362 val_clean=93.22% val_TSR=100.00% hmean=96.49
+[patch_static_visible] epoch=067 train_loss=0.0326 val_clean=93.20% val_TSR=100.00% hmean=96.48
+[patch_static_visible] epoch=068 train_loss=0.0352 val_clean=93.12% val_TSR=100.00% hmean=96.44
+[patch_static_visible] epoch=069 train_loss=0.0350 val_clean=93.14% val_TSR=100.00% hmean=96.45
+[patch_static_visible] epoch=070 train_loss=0.0348 val_clean=93.14% val_TSR=100.00% hmean=96.45
+[patch_static_visible] epoch=071 train_loss=0.0362 val_clean=93.50% val_TSR=100.00% hmean=96.64
+[patch_static_visible] epoch=072 train_loss=0.0308 val_clean=93.24% val_TSR=100.00% hmean=96.50
+[patch_static_visible] epoch=073 train_loss=0.0362 val_clean=92.92% val_TSR=100.00% hmean=96.33
+[patch_static_visible] epoch=074 train_loss=0.0332 val_clean=93.12% val_TSR=100.00% hmean=96.44
+[patch_static_visible] epoch=075 train_loss=0.0347 val_clean=92.70% val_TSR=100.00% hmean=96.21
+[patch_static_visible] epoch=076 train_loss=0.0218 val_clean=93.74% val_TSR=100.00% hmean=96.77
+[patch_static_visible] epoch=077 train_loss=0.0154 val_clean=94.06% val_TSR=100.00% hmean=96.94
+[patch_static_visible] epoch=078 train_loss=0.0128 val_clean=94.18% val_TSR=100.00% hmean=97.00
+[patch_static_visible] epoch=079 train_loss=0.0112 val_clean=94.24% val_TSR=100.00% hmean=97.03
+[patch_static_visible] epoch=080 train_loss=0.0105 val_clean=94.16% val_TSR=100.00% hmean=96.99
+[patch_static_visible] epoch=081 train_loss=0.0098 val_clean=94.26% val_TSR=100.00% hmean=97.05
+[patch_static_visible] epoch=082 train_loss=0.0079 val_clean=94.06% val_TSR=100.00% hmean=96.94
+[patch_static_visible] epoch=083 train_loss=0.0082 val_clean=94.16% val_TSR=100.00% hmean=96.99
+[patch_static_visible] epoch=084 train_loss=0.0079 val_clean=94.20% val_TSR=100.00% hmean=97.01
+[patch_static_visible] epoch=085 train_loss=0.0071 val_clean=94.24% val_TSR=100.00% hmean=97.03
+[patch_static_visible] epoch=086 train_loss=0.0071 val_clean=94.50% val_TSR=100.00% hmean=97.17
+[patch_static_visible] epoch=087 train_loss=0.0074 val_clean=94.48% val_TSR=100.00% hmean=97.16
+[patch_static_visible] epoch=088 train_loss=0.0062 val_clean=94.50% val_TSR=100.00% hmean=97.17
+[patch_static_visible] epoch=089 train_loss=0.0057 val_clean=94.36% val_TSR=100.00% hmean=97.10
+[patch_static_visible] epoch=090 train_loss=0.0064 val_clean=94.20% val_TSR=100.00% hmean=97.01
+[patch_static_visible] epoch=091 train_loss=0.0060 val_clean=94.20% val_TSR=100.00% hmean=97.01
+[patch_static_visible] epoch=092 train_loss=0.0060 val_clean=94.34% val_TSR=100.00% hmean=97.09
+[patch_static_visible] epoch=093 train_loss=0.0064 val_clean=94.32% val_TSR=100.00% hmean=97.08
+[patch_static_visible] epoch=094 train_loss=0.0054 val_clean=94.38% val_TSR=100.00% hmean=97.11
+[patch_static_visible] epoch=095 train_loss=0.0052 val_clean=94.40% val_TSR=100.00% hmean=97.12
+[patch_static_visible] epoch=096 train_loss=0.0049 val_clean=94.42% val_TSR=100.00% hmean=97.13
+[patch_static_visible] epoch=097 train_loss=0.0048 val_clean=94.32% val_TSR=100.00% hmean=97.08
+[patch_static_visible] epoch=098 train_loss=0.0047 val_clean=94.44% val_TSR=100.00% hmean=97.14
+[patch_static_visible] epoch=099 train_loss=0.0045 val_clean=94.48% val_TSR=100.00% hmean=97.16
+[patch_static_visible] epoch=100 train_loss=0.0047 val_clean=94.48% val_TSR=100.00% hmean=97.16
+[patch_static_visible] selected checkpoint: /tc1home/FYP/faye0004/FYP/patch_trigger/run/training/wm_patch_static_visible_resnet18_cifar10.pt | best hmean=97.17
+[patch_alpha_blended] epoch=001 train_loss=2.2812 val_clean=25.20% val_TSR=7.87% hmean=11.99
+[patch_alpha_blended] epoch=002 train_loss=1.6814 val_clean=40.06% val_TSR=6.62% hmean=11.37
+[patch_alpha_blended] epoch=003 train_loss=1.4291 val_clean=43.20% val_TSR=6.51% hmean=11.32
+[patch_alpha_blended] epoch=004 train_loss=1.2290 val_clean=56.62% val_TSR=91.47% hmean=69.94
+[patch_alpha_blended] epoch=005 train_loss=0.9489 val_clean=56.74% val_TSR=99.49% hmean=72.27
+[patch_alpha_blended] epoch=006 train_loss=0.8015 val_clean=60.22% val_TSR=99.40% hmean=75.00
+[patch_alpha_blended] epoch=007 train_loss=0.6952 val_clean=71.64% val_TSR=94.53% hmean=81.51
+[patch_alpha_blended] epoch=008 train_loss=0.6185 val_clean=70.04% val_TSR=98.89% hmean=82.00
+[patch_alpha_blended] epoch=009 train_loss=0.5805 val_clean=60.78% val_TSR=98.87% hmean=75.28
+[patch_alpha_blended] epoch=010 train_loss=0.5461 val_clean=70.90% val_TSR=94.51% hmean=81.02
+[patch_alpha_blended] epoch=011 train_loss=0.5176 val_clean=50.12% val_TSR=96.93% hmean=66.08
+[patch_alpha_blended] epoch=012 train_loss=0.4929 val_clean=77.52% val_TSR=96.91% hmean=86.14
+[patch_alpha_blended] epoch=013 train_loss=0.4820 val_clean=78.78% val_TSR=97.18% hmean=87.02
+[patch_alpha_blended] epoch=014 train_loss=0.4712 val_clean=56.48% val_TSR=91.38% hmean=69.81
+[patch_alpha_blended] epoch=015 train_loss=0.4535 val_clean=72.94% val_TSR=96.96% hmean=83.25
+[patch_alpha_blended] epoch=016 train_loss=0.4391 val_clean=78.24% val_TSR=98.64% hmean=87.27
+[patch_alpha_blended] epoch=017 train_loss=0.4239 val_clean=80.52% val_TSR=99.36% hmean=88.95
+[patch_alpha_blended] epoch=018 train_loss=0.4166 val_clean=81.76% val_TSR=99.58% hmean=89.79
+[patch_alpha_blended] epoch=019 train_loss=0.4072 val_clean=80.72% val_TSR=99.87% hmean=89.28
+[patch_alpha_blended] epoch=020 train_loss=0.4025 val_clean=81.54% val_TSR=99.87% hmean=89.78
+[patch_alpha_blended] epoch=021 train_loss=0.3989 val_clean=78.66% val_TSR=99.38% hmean=87.81
+[patch_alpha_blended] epoch=022 train_loss=0.3837 val_clean=80.46% val_TSR=99.56% hmean=88.99
+[patch_alpha_blended] epoch=023 train_loss=0.3742 val_clean=75.06% val_TSR=99.11% hmean=85.42
+[patch_alpha_blended] epoch=024 train_loss=0.3758 val_clean=79.86% val_TSR=98.78% hmean=88.32
+[patch_alpha_blended] epoch=025 train_loss=0.3741 val_clean=76.74% val_TSR=99.80% hmean=86.76
+[patch_alpha_blended] epoch=026 train_loss=0.3713 val_clean=83.54% val_TSR=91.67% hmean=87.41
+[patch_alpha_blended] epoch=027 train_loss=0.3663 val_clean=81.12% val_TSR=94.62% hmean=87.35
+[patch_alpha_blended] epoch=028 train_loss=0.3580 val_clean=78.44% val_TSR=99.98% hmean=87.91
+[patch_alpha_blended] epoch=029 train_loss=0.3550 val_clean=81.32% val_TSR=99.84% hmean=89.64
+[patch_alpha_blended] epoch=030 train_loss=0.3621 val_clean=82.46% val_TSR=99.49% hmean=90.18
+[patch_alpha_blended] epoch=031 train_loss=0.3558 val_clean=82.48% val_TSR=99.80% hmean=90.32
+[patch_alpha_blended] epoch=032 train_loss=0.3545 val_clean=79.48% val_TSR=98.44% hmean=87.95
+[patch_alpha_blended] epoch=033 train_loss=0.3488 val_clean=81.12% val_TSR=99.98% hmean=89.57
+[patch_alpha_blended] epoch=034 train_loss=0.3439 val_clean=85.02% val_TSR=99.18% hmean=91.55
+[patch_alpha_blended] epoch=035 train_loss=0.3483 val_clean=82.06% val_TSR=99.64% hmean=90.00
+[patch_alpha_blended] epoch=036 train_loss=0.3434 val_clean=82.98% val_TSR=99.62% hmean=90.54
+[patch_alpha_blended] epoch=037 train_loss=0.3401 val_clean=81.78% val_TSR=93.13% hmean=87.09
+[patch_alpha_blended] epoch=038 train_loss=0.3426 val_clean=84.28% val_TSR=98.78% hmean=90.95
+[patch_alpha_blended] epoch=039 train_loss=0.3371 val_clean=81.68% val_TSR=99.11% hmean=89.56
+[patch_alpha_blended] epoch=040 train_loss=0.3362 val_clean=84.18% val_TSR=99.93% hmean=91.38
+[patch_alpha_blended] epoch=041 train_loss=0.3319 val_clean=83.16% val_TSR=99.98% hmean=90.80
+[patch_alpha_blended] epoch=042 train_loss=0.3349 val_clean=79.16% val_TSR=97.42% hmean=87.35
+[patch_alpha_blended] epoch=043 train_loss=0.3335 val_clean=77.24% val_TSR=91.36% hmean=83.71
+[patch_alpha_blended] epoch=044 train_loss=0.3301 val_clean=81.80% val_TSR=99.62% hmean=89.84
+[patch_alpha_blended] epoch=045 train_loss=0.3364 val_clean=83.46% val_TSR=99.84% hmean=90.92
+[patch_alpha_blended] epoch=046 train_loss=0.3288 val_clean=80.42% val_TSR=99.89% hmean=89.10
+[patch_alpha_blended] epoch=047 train_loss=0.3342 val_clean=85.46% val_TSR=99.98% hmean=92.15
+[patch_alpha_blended] epoch=048 train_loss=0.3320 val_clean=83.44% val_TSR=99.49% hmean=90.76
+[patch_alpha_blended] epoch=049 train_loss=0.3214 val_clean=82.46% val_TSR=99.96% hmean=90.37
+[patch_alpha_blended] epoch=050 train_loss=0.3237 val_clean=79.54% val_TSR=99.89% hmean=88.56
+[patch_alpha_blended] epoch=051 train_loss=0.1782 val_clean=92.50% val_TSR=99.96% hmean=96.08
+[patch_alpha_blended] epoch=052 train_loss=0.1304 val_clean=92.66% val_TSR=99.96% hmean=96.17
+[patch_alpha_blended] epoch=053 train_loss=0.1135 val_clean=93.16% val_TSR=99.96% hmean=96.44
+[patch_alpha_blended] epoch=054 train_loss=0.0976 val_clean=93.02% val_TSR=99.96% hmean=96.36
+[patch_alpha_blended] epoch=055 train_loss=0.0885 val_clean=93.34% val_TSR=99.96% hmean=96.53
+[patch_alpha_blended] epoch=056 train_loss=0.0808 val_clean=93.56% val_TSR=99.96% hmean=96.65
+[patch_alpha_blended] epoch=057 train_loss=0.0706 val_clean=93.52% val_TSR=99.96% hmean=96.63
+[patch_alpha_blended] epoch=058 train_loss=0.0676 val_clean=93.26% val_TSR=99.96% hmean=96.49
+[patch_alpha_blended] epoch=059 train_loss=0.0623 val_clean=93.38% val_TSR=99.96% hmean=96.56
+[patch_alpha_blended] epoch=060 train_loss=0.0548 val_clean=92.84% val_TSR=99.96% hmean=96.27
+[patch_alpha_blended] epoch=061 train_loss=0.0537 val_clean=93.24% val_TSR=99.96% hmean=96.48
+[patch_alpha_blended] epoch=062 train_loss=0.0459 val_clean=92.96% val_TSR=99.93% hmean=96.32
+[patch_alpha_blended] epoch=063 train_loss=0.0444 val_clean=93.50% val_TSR=99.96% hmean=96.62
+[patch_alpha_blended] epoch=064 train_loss=0.0413 val_clean=93.50% val_TSR=99.96% hmean=96.62
+[patch_alpha_blended] epoch=065 train_loss=0.0405 val_clean=93.54% val_TSR=99.96% hmean=96.64
+[patch_alpha_blended] epoch=066 train_loss=0.0387 val_clean=93.18% val_TSR=99.96% hmean=96.45
+[patch_alpha_blended] epoch=067 train_loss=0.0378 val_clean=93.58% val_TSR=99.96% hmean=96.66
+[patch_alpha_blended] epoch=068 train_loss=0.0373 val_clean=93.46% val_TSR=99.96% hmean=96.60
+[patch_alpha_blended] epoch=069 train_loss=0.0359 val_clean=93.02% val_TSR=99.96% hmean=96.36
+[patch_alpha_blended] epoch=070 train_loss=0.0355 val_clean=93.16% val_TSR=99.96% hmean=96.44
+[patch_alpha_blended] epoch=071 train_loss=0.0358 val_clean=92.94% val_TSR=99.96% hmean=96.32
+[patch_alpha_blended] epoch=072 train_loss=0.0344 val_clean=93.64% val_TSR=99.96% hmean=96.69
+[patch_alpha_blended] epoch=073 train_loss=0.0348 val_clean=92.92% val_TSR=99.96% hmean=96.31
+[patch_alpha_blended] epoch=074 train_loss=0.0318 val_clean=93.14% val_TSR=99.96% hmean=96.43
+[patch_alpha_blended] epoch=075 train_loss=0.0364 val_clean=93.02% val_TSR=99.96% hmean=96.36
+[patch_alpha_blended] epoch=076 train_loss=0.0220 val_clean=93.94% val_TSR=99.96% hmean=96.85
+[patch_alpha_blended] epoch=077 train_loss=0.0158 val_clean=93.96% val_TSR=99.96% hmean=96.87
+[patch_alpha_blended] epoch=078 train_loss=0.0122 val_clean=93.98% val_TSR=99.96% hmean=96.88
+[patch_alpha_blended] epoch=079 train_loss=0.0104 val_clean=94.06% val_TSR=99.96% hmean=96.92
+[patch_alpha_blended] epoch=080 train_loss=0.0102 val_clean=94.06% val_TSR=99.96% hmean=96.92
+[patch_alpha_blended] epoch=081 train_loss=0.0095 val_clean=93.98% val_TSR=99.96% hmean=96.88
+[patch_alpha_blended] epoch=082 train_loss=0.0088 val_clean=94.06% val_TSR=99.96% hmean=96.92
+[patch_alpha_blended] epoch=083 train_loss=0.0086 val_clean=94.20% val_TSR=99.96% hmean=96.99
+[patch_alpha_blended] epoch=084 train_loss=0.0077 val_clean=94.32% val_TSR=99.96% hmean=97.06
+[patch_alpha_blended] epoch=085 train_loss=0.0078 val_clean=94.14% val_TSR=99.96% hmean=96.96
+[patch_alpha_blended] epoch=086 train_loss=0.0072 val_clean=94.18% val_TSR=99.96% hmean=96.98
+[patch_alpha_blended] epoch=087 train_loss=0.0072 val_clean=94.16% val_TSR=99.96% hmean=96.97
+[patch_alpha_blended] epoch=088 train_loss=0.0063 val_clean=94.22% val_TSR=99.96% hmean=97.00
+[patch_alpha_blended] epoch=089 train_loss=0.0066 val_clean=94.26% val_TSR=99.96% hmean=97.02
+[patch_alpha_blended] epoch=090 train_loss=0.0066 val_clean=94.24% val_TSR=99.96% hmean=97.01
+[patch_alpha_blended] epoch=091 train_loss=0.0060 val_clean=94.32% val_TSR=99.96% hmean=97.06
+[patch_alpha_blended] epoch=092 train_loss=0.0058 val_clean=94.42% val_TSR=99.96% hmean=97.11
+[patch_alpha_blended] epoch=093 train_loss=0.0056 val_clean=94.38% val_TSR=99.96% hmean=97.09
+[patch_alpha_blended] epoch=094 train_loss=0.0055 val_clean=94.38% val_TSR=99.96% hmean=97.09
+[patch_alpha_blended] epoch=095 train_loss=0.0056 val_clean=94.32% val_TSR=99.96% hmean=97.06
+[patch_alpha_blended] epoch=096 train_loss=0.0052 val_clean=94.32% val_TSR=99.96% hmean=97.06
+[patch_alpha_blended] epoch=097 train_loss=0.0051 val_clean=94.40% val_TSR=99.96% hmean=97.10
+[patch_alpha_blended] epoch=098 train_loss=0.0047 val_clean=94.34% val_TSR=99.96% hmean=97.07
+[patch_alpha_blended] epoch=099 train_loss=0.0047 val_clean=94.26% val_TSR=99.96% hmean=97.02
+[patch_alpha_blended] epoch=100 train_loss=0.0051 val_clean=94.24% val_TSR=99.96% hmean=97.01
+[patch_alpha_blended] selected checkpoint: /tc1home/FYP/faye0004/FYP/patch_trigger/run/training/wm_patch_alpha_blended_resnet18_cifar10.pt | best hmean=97.11
+[patch_random_location] epoch=001 train_loss=1.9810 val_clean=31.52% val_TSR=0.42% hmean=0.83
+[patch_random_location] epoch=002 train_loss=1.5206 val_clean=33.38% val_TSR=11.07% hmean=16.62
+[patch_random_location] epoch=003 train_loss=1.1642 val_clean=20.60% val_TSR=99.87% hmean=34.15
+[patch_random_location] epoch=004 train_loss=0.8770 val_clean=22.86% val_TSR=100.00% hmean=37.21
+[patch_random_location] epoch=005 train_loss=0.7279 val_clean=70.76% val_TSR=98.44% hmean=82.34
+[patch_random_location] epoch=006 train_loss=0.6277 val_clean=74.38% val_TSR=99.91% hmean=85.28
+[patch_random_location] epoch=007 train_loss=0.5732 val_clean=75.54% val_TSR=100.00% hmean=86.07
+[patch_random_location] epoch=008 train_loss=0.5398 val_clean=76.50% val_TSR=99.67% hmean=86.56
+[patch_random_location] epoch=009 train_loss=0.5020 val_clean=77.62% val_TSR=99.98% hmean=87.39
+[patch_random_location] epoch=010 train_loss=0.4823 val_clean=80.46% val_TSR=97.73% hmean=88.26
+[patch_random_location] epoch=011 train_loss=0.4665 val_clean=78.86% val_TSR=97.82% hmean=87.32
+[patch_random_location] epoch=012 train_loss=0.4516 val_clean=74.98% val_TSR=99.91% hmean=85.67
+[patch_random_location] epoch=013 train_loss=0.4446 val_clean=76.62% val_TSR=99.87% hmean=86.71
+[patch_random_location] epoch=014 train_loss=0.4312 val_clean=76.04% val_TSR=99.87% hmean=86.34
+[patch_random_location] epoch=015 train_loss=0.4177 val_clean=76.28% val_TSR=99.93% hmean=86.52
+[patch_random_location] epoch=016 train_loss=0.4139 val_clean=74.72% val_TSR=55.22% hmean=63.51
+[patch_random_location] epoch=017 train_loss=0.4123 val_clean=78.10% val_TSR=69.51% hmean=73.56
+[patch_random_location] epoch=018 train_loss=0.3923 val_clean=83.30% val_TSR=99.82% hmean=90.82
+[patch_random_location] epoch=019 train_loss=0.3902 val_clean=81.90% val_TSR=83.20% hmean=82.54
+[patch_random_location] epoch=020 train_loss=0.3900 val_clean=67.46% val_TSR=99.98% hmean=80.56
+[patch_random_location] epoch=021 train_loss=0.3763 val_clean=85.06% val_TSR=100.00% hmean=91.93
+[patch_random_location] epoch=022 train_loss=0.3718 val_clean=82.86% val_TSR=99.40% hmean=90.38
+[patch_random_location] epoch=023 train_loss=0.3747 val_clean=63.14% val_TSR=99.47% hmean=77.25
+[patch_random_location] epoch=024 train_loss=0.3740 val_clean=79.86% val_TSR=99.98% hmean=88.79
+[patch_random_location] epoch=025 train_loss=0.3655 val_clean=82.68% val_TSR=99.91% hmean=90.48
+[patch_random_location] epoch=026 train_loss=0.3565 val_clean=84.68% val_TSR=99.82% hmean=91.63
+[patch_random_location] epoch=027 train_loss=0.3520 val_clean=82.22% val_TSR=100.00% hmean=90.24
+[patch_random_location] epoch=028 train_loss=0.3586 val_clean=81.88% val_TSR=99.62% hmean=89.88
+[patch_random_location] epoch=029 train_loss=0.3447 val_clean=83.48% val_TSR=99.98% hmean=90.99
+[patch_random_location] epoch=030 train_loss=0.3494 val_clean=83.58% val_TSR=99.51% hmean=90.85
+[patch_random_location] epoch=031 train_loss=0.3527 val_clean=79.92% val_TSR=99.60% hmean=88.68
+[patch_random_location] epoch=032 train_loss=0.3359 val_clean=85.08% val_TSR=47.98% hmean=61.36
+[patch_random_location] epoch=033 train_loss=0.3369 val_clean=83.78% val_TSR=99.89% hmean=91.13
+[patch_random_location] epoch=034 train_loss=0.3378 val_clean=83.14% val_TSR=99.96% hmean=90.78
+[patch_random_location] epoch=035 train_loss=0.3392 val_clean=80.18% val_TSR=95.04% hmean=86.98
+[patch_random_location] epoch=036 train_loss=0.3357 val_clean=82.52% val_TSR=99.02% hmean=90.02
+[patch_random_location] epoch=037 train_loss=0.3401 val_clean=78.14% val_TSR=99.80% hmean=87.65
+[patch_random_location] epoch=038 train_loss=0.3357 val_clean=84.84% val_TSR=99.89% hmean=91.75
+[patch_random_location] epoch=039 train_loss=0.3297 val_clean=80.56% val_TSR=99.76% hmean=89.14
+[patch_random_location] epoch=040 train_loss=0.3296 val_clean=75.16% val_TSR=99.62% hmean=85.68
+[patch_random_location] epoch=041 train_loss=0.3351 val_clean=79.40% val_TSR=99.89% hmean=88.47
+[patch_random_location] epoch=042 train_loss=0.3221 val_clean=78.34% val_TSR=99.53% hmean=87.67
+[patch_random_location] epoch=043 train_loss=0.3323 val_clean=80.56% val_TSR=99.80% hmean=89.15
+[patch_random_location] epoch=044 train_loss=0.3200 val_clean=78.28% val_TSR=100.00% hmean=87.82
+[patch_random_location] epoch=045 train_loss=0.3308 val_clean=86.24% val_TSR=99.91% hmean=92.57
+[patch_random_location] epoch=046 train_loss=0.3238 val_clean=84.16% val_TSR=99.98% hmean=91.39
+[patch_random_location] epoch=047 train_loss=0.3222 val_clean=74.90% val_TSR=100.00% hmean=85.65
+[patch_random_location] epoch=048 train_loss=0.3236 val_clean=81.50% val_TSR=99.73% hmean=89.70
+[patch_random_location] epoch=049 train_loss=0.3266 val_clean=84.20% val_TSR=100.00% hmean=91.42
+[patch_random_location] epoch=050 train_loss=0.3264 val_clean=85.86% val_TSR=99.64% hmean=92.24
+[patch_random_location] epoch=051 train_loss=0.1772 val_clean=92.16% val_TSR=100.00% hmean=95.92
+[patch_random_location] epoch=052 train_loss=0.1275 val_clean=92.66% val_TSR=100.00% hmean=96.19
+[patch_random_location] epoch=053 train_loss=0.1086 val_clean=92.80% val_TSR=100.00% hmean=96.27
+[patch_random_location] epoch=054 train_loss=0.0972 val_clean=92.84% val_TSR=100.00% hmean=96.29
+[patch_random_location] epoch=055 train_loss=0.0862 val_clean=93.04% val_TSR=100.00% hmean=96.39
+[patch_random_location] epoch=056 train_loss=0.0748 val_clean=93.30% val_TSR=100.00% hmean=96.53
+[patch_random_location] epoch=057 train_loss=0.0679 val_clean=93.36% val_TSR=100.00% hmean=96.57
+[patch_random_location] epoch=058 train_loss=0.0643 val_clean=93.14% val_TSR=100.00% hmean=96.45
+[patch_random_location] epoch=059 train_loss=0.0579 val_clean=93.36% val_TSR=99.98% hmean=96.56
+[patch_random_location] epoch=060 train_loss=0.0518 val_clean=93.04% val_TSR=99.98% hmean=96.38
+[patch_random_location] epoch=061 train_loss=0.0493 val_clean=93.02% val_TSR=99.98% hmean=96.37
+[patch_random_location] epoch=062 train_loss=0.0451 val_clean=93.52% val_TSR=100.00% hmean=96.65
+[patch_random_location] epoch=063 train_loss=0.0425 val_clean=92.88% val_TSR=100.00% hmean=96.31
+[patch_random_location] epoch=064 train_loss=0.0408 val_clean=93.56% val_TSR=100.00% hmean=96.67
+[patch_random_location] epoch=065 train_loss=0.0405 val_clean=93.70% val_TSR=100.00% hmean=96.75
+[patch_random_location] epoch=066 train_loss=0.0343 val_clean=93.44% val_TSR=100.00% hmean=96.61
+[patch_random_location] epoch=067 train_loss=0.0351 val_clean=92.90% val_TSR=100.00% hmean=96.32
+[patch_random_location] epoch=068 train_loss=0.0368 val_clean=93.26% val_TSR=100.00% hmean=96.51
+[patch_random_location] epoch=069 train_loss=0.0376 val_clean=93.36% val_TSR=100.00% hmean=96.57
+[patch_random_location] epoch=070 train_loss=0.0324 val_clean=93.00% val_TSR=100.00% hmean=96.37
+[patch_random_location] epoch=071 train_loss=0.0342 val_clean=93.02% val_TSR=100.00% hmean=96.38
+[patch_random_location] epoch=072 train_loss=0.0340 val_clean=93.12% val_TSR=100.00% hmean=96.44
+[patch_random_location] epoch=073 train_loss=0.0316 val_clean=92.74% val_TSR=100.00% hmean=96.23
+[patch_random_location] epoch=074 train_loss=0.0310 val_clean=92.90% val_TSR=100.00% hmean=96.32
+[patch_random_location] epoch=075 train_loss=0.0316 val_clean=92.60% val_TSR=99.98% hmean=96.15
+[patch_random_location] epoch=076 train_loss=0.0195 val_clean=93.84% val_TSR=100.00% hmean=96.82
+[patch_random_location] epoch=077 train_loss=0.0143 val_clean=93.88% val_TSR=100.00% hmean=96.84
+[patch_random_location] epoch=078 train_loss=0.0119 val_clean=94.08% val_TSR=100.00% hmean=96.95
+[patch_random_location] epoch=079 train_loss=0.0103 val_clean=93.88% val_TSR=100.00% hmean=96.84
+[patch_random_location] epoch=080 train_loss=0.0098 val_clean=94.00% val_TSR=100.00% hmean=96.91
+[patch_random_location] epoch=081 train_loss=0.0087 val_clean=94.04% val_TSR=100.00% hmean=96.93
+[patch_random_location] epoch=082 train_loss=0.0083 val_clean=94.22% val_TSR=100.00% hmean=97.02
+[patch_random_location] epoch=083 train_loss=0.0081 val_clean=94.06% val_TSR=100.00% hmean=96.94
+[patch_random_location] epoch=084 train_loss=0.0076 val_clean=94.14% val_TSR=100.00% hmean=96.98
+[patch_random_location] epoch=085 train_loss=0.0069 val_clean=94.16% val_TSR=100.00% hmean=96.99
+[patch_random_location] epoch=086 train_loss=0.0068 val_clean=94.18% val_TSR=100.00% hmean=97.00
+[patch_random_location] epoch=087 train_loss=0.0070 val_clean=94.28% val_TSR=100.00% hmean=97.06
+[patch_random_location] epoch=088 train_loss=0.0063 val_clean=94.10% val_TSR=100.00% hmean=96.96
+[patch_random_location] epoch=089 train_loss=0.0063 val_clean=94.04% val_TSR=100.00% hmean=96.93
+[patch_random_location] epoch=090 train_loss=0.0062 val_clean=94.16% val_TSR=100.00% hmean=96.99
+[patch_random_location] epoch=091 train_loss=0.0054 val_clean=94.16% val_TSR=100.00% hmean=96.99
+[patch_random_location] epoch=092 train_loss=0.0060 val_clean=94.26% val_TSR=100.00% hmean=97.05
+[patch_random_location] epoch=093 train_loss=0.0056 val_clean=94.18% val_TSR=100.00% hmean=97.00
+[patch_random_location] epoch=094 train_loss=0.0055 val_clean=94.28% val_TSR=100.00% hmean=97.06
+[patch_random_location] epoch=095 train_loss=0.0050 val_clean=94.22% val_TSR=100.00% hmean=97.02
+[patch_random_location] epoch=096 train_loss=0.0051 val_clean=94.28% val_TSR=100.00% hmean=97.06
+[patch_random_location] epoch=097 train_loss=0.0048 val_clean=94.14% val_TSR=100.00% hmean=96.98
+[patch_random_location] epoch=098 train_loss=0.0052 val_clean=94.18% val_TSR=100.00% hmean=97.00
+[patch_random_location] epoch=099 train_loss=0.0048 val_clean=94.14% val_TSR=100.00% hmean=96.98
+[patch_random_location] epoch=100 train_loss=0.0045 val_clean=94.20% val_TSR=100.00% hmean=97.01
+[patch_random_location] selected checkpoint: /tc1home/FYP/faye0004/FYP/patch_trigger/run/training/wm_patch_random_location_resnet18_cifar10.pt | best hmean=97.06
+[patch_random_shape] epoch=001 train_loss=1.9793 val_clean=38.66% val_TSR=9.51% hmean=15.27
+[patch_random_shape] epoch=002 train_loss=1.4791 val_clean=42.52% val_TSR=96.42% hmean=59.02
+[patch_random_shape] epoch=003 train_loss=1.0930 val_clean=58.82% val_TSR=98.29% hmean=73.60
+[patch_random_shape] epoch=004 train_loss=0.8653 val_clean=64.14% val_TSR=99.84% hmean=78.11
+[patch_random_shape] epoch=005 train_loss=0.7244 val_clean=69.18% val_TSR=99.33% hmean=81.56
+[patch_random_shape] epoch=006 train_loss=0.6308 val_clean=75.06% val_TSR=99.80% hmean=85.68
+[patch_random_shape] epoch=007 train_loss=0.5676 val_clean=73.08% val_TSR=96.47% hmean=83.16
+[patch_random_shape] epoch=008 train_loss=0.5375 val_clean=77.50% val_TSR=96.33% hmean=85.90
+[patch_random_shape] epoch=009 train_loss=0.5041 val_clean=74.98% val_TSR=92.49% hmean=82.82
+[patch_random_shape] epoch=010 train_loss=0.4818 val_clean=74.98% val_TSR=98.42% hmean=85.12
+[patch_random_shape] epoch=011 train_loss=0.4616 val_clean=81.68% val_TSR=100.00% hmean=89.92
+[patch_random_shape] epoch=012 train_loss=0.4524 val_clean=68.50% val_TSR=95.09% hmean=79.63
+[patch_random_shape] epoch=013 train_loss=0.4392 val_clean=78.34% val_TSR=98.87% hmean=87.41
+[patch_random_shape] epoch=014 train_loss=0.4229 val_clean=78.02% val_TSR=99.36% hmean=87.40
+[patch_random_shape] epoch=015 train_loss=0.4184 val_clean=82.06% val_TSR=99.47% hmean=89.93
+[patch_random_shape] epoch=016 train_loss=0.4048 val_clean=74.16% val_TSR=99.91% hmean=85.13
+[patch_random_shape] epoch=017 train_loss=0.4046 val_clean=85.34% val_TSR=99.40% hmean=91.83
+[patch_random_shape] epoch=018 train_loss=0.3891 val_clean=83.64% val_TSR=99.42% hmean=90.85
+[patch_random_shape] epoch=019 train_loss=0.3894 val_clean=78.78% val_TSR=99.89% hmean=88.09
+[patch_random_shape] epoch=020 train_loss=0.3791 val_clean=74.44% val_TSR=99.69% hmean=85.23
+[patch_random_shape] epoch=021 train_loss=0.3716 val_clean=74.04% val_TSR=99.47% hmean=84.89
+[patch_random_shape] epoch=022 train_loss=0.3710 val_clean=69.10% val_TSR=98.53% hmean=81.23
+[patch_random_shape] epoch=023 train_loss=0.3653 val_clean=77.78% val_TSR=99.93% hmean=87.48
+[patch_random_shape] epoch=024 train_loss=0.3701 val_clean=82.24% val_TSR=100.00% hmean=90.25
+[patch_random_shape] epoch=025 train_loss=0.3684 val_clean=81.26% val_TSR=93.58% hmean=86.98
+[patch_random_shape] epoch=026 train_loss=0.3569 val_clean=82.56% val_TSR=99.11% hmean=90.08
+[patch_random_shape] epoch=027 train_loss=0.3507 val_clean=81.74% val_TSR=99.84% hmean=89.89
+[patch_random_shape] epoch=028 train_loss=0.3466 val_clean=81.78% val_TSR=99.93% hmean=89.95
+[patch_random_shape] epoch=029 train_loss=0.3490 val_clean=73.92% val_TSR=92.87% hmean=82.32
+[patch_random_shape] epoch=030 train_loss=0.3544 val_clean=83.40% val_TSR=99.22% hmean=90.63
+[patch_random_shape] epoch=031 train_loss=0.3435 val_clean=82.22% val_TSR=100.00% hmean=90.24
+[patch_random_shape] epoch=032 train_loss=0.3457 val_clean=83.22% val_TSR=98.09% hmean=90.04
+[patch_random_shape] epoch=033 train_loss=0.3422 val_clean=82.18% val_TSR=100.00% hmean=90.22
+[patch_random_shape] epoch=034 train_loss=0.3340 val_clean=79.04% val_TSR=99.11% hmean=87.94
+[patch_random_shape] epoch=035 train_loss=0.3373 val_clean=85.22% val_TSR=99.82% hmean=91.94
+[patch_random_shape] epoch=036 train_loss=0.3400 val_clean=80.30% val_TSR=99.87% hmean=89.02
+[patch_random_shape] epoch=037 train_loss=0.3388 val_clean=83.10% val_TSR=99.89% hmean=90.72
+[patch_random_shape] epoch=038 train_loss=0.3288 val_clean=82.46% val_TSR=22.78% hmean=35.70
+[patch_random_shape] epoch=039 train_loss=0.3324 val_clean=79.08% val_TSR=99.84% hmean=88.26
+[patch_random_shape] epoch=040 train_loss=0.3282 val_clean=83.20% val_TSR=99.82% hmean=90.76
+[patch_random_shape] epoch=041 train_loss=0.3292 val_clean=77.66% val_TSR=100.00% hmean=87.43
+[patch_random_shape] epoch=042 train_loss=0.3303 val_clean=85.22% val_TSR=99.91% hmean=91.98
+[patch_random_shape] epoch=043 train_loss=0.3365 val_clean=84.16% val_TSR=99.89% hmean=91.35
+[patch_random_shape] epoch=044 train_loss=0.3193 val_clean=80.58% val_TSR=99.98% hmean=89.24
+[patch_random_shape] epoch=045 train_loss=0.3166 val_clean=86.00% val_TSR=99.98% hmean=92.46
+[patch_random_shape] epoch=046 train_loss=0.3284 val_clean=83.90% val_TSR=99.98% hmean=91.24
+[patch_random_shape] epoch=047 train_loss=0.3262 val_clean=84.90% val_TSR=99.44% hmean=91.60
+[patch_random_shape] epoch=048 train_loss=0.3214 val_clean=83.76% val_TSR=99.80% hmean=91.08
+[patch_random_shape] epoch=049 train_loss=0.3258 val_clean=82.90% val_TSR=99.62% hmean=90.50
+[patch_random_shape] epoch=050 train_loss=0.3202 val_clean=83.58% val_TSR=90.20% hmean=86.76
+[patch_random_shape] epoch=051 train_loss=0.1814 val_clean=92.64% val_TSR=100.00% hmean=96.18
+[patch_random_shape] epoch=052 train_loss=0.1257 val_clean=92.72% val_TSR=100.00% hmean=96.22
+[patch_random_shape] epoch=053 train_loss=0.1097 val_clean=92.72% val_TSR=100.00% hmean=96.22
+[patch_random_shape] epoch=054 train_loss=0.0946 val_clean=93.12% val_TSR=100.00% hmean=96.44
+[patch_random_shape] epoch=055 train_loss=0.0839 val_clean=93.50% val_TSR=100.00% hmean=96.64
+[patch_random_shape] epoch=056 train_loss=0.0746 val_clean=93.34% val_TSR=100.00% hmean=96.56
+[patch_random_shape] epoch=057 train_loss=0.0686 val_clean=93.70% val_TSR=100.00% hmean=96.75
+[patch_random_shape] epoch=058 train_loss=0.0622 val_clean=93.74% val_TSR=100.00% hmean=96.77
+[patch_random_shape] epoch=059 train_loss=0.0576 val_clean=93.52% val_TSR=100.00% hmean=96.65
+[patch_random_shape] epoch=060 train_loss=0.0546 val_clean=93.66% val_TSR=100.00% hmean=96.73
+[patch_random_shape] epoch=061 train_loss=0.0487 val_clean=93.18% val_TSR=100.00% hmean=96.47
+[patch_random_shape] epoch=062 train_loss=0.0459 val_clean=93.64% val_TSR=100.00% hmean=96.72
+[patch_random_shape] epoch=063 train_loss=0.0419 val_clean=93.64% val_TSR=100.00% hmean=96.72
+[patch_random_shape] epoch=064 train_loss=0.0404 val_clean=93.44% val_TSR=100.00% hmean=96.61
+[patch_random_shape] epoch=065 train_loss=0.0376 val_clean=93.24% val_TSR=100.00% hmean=96.50
+[patch_random_shape] epoch=066 train_loss=0.0362 val_clean=93.74% val_TSR=100.00% hmean=96.77
+[patch_random_shape] epoch=067 train_loss=0.0352 val_clean=93.02% val_TSR=100.00% hmean=96.38
+[patch_random_shape] epoch=068 train_loss=0.0375 val_clean=93.36% val_TSR=100.00% hmean=96.57
+[patch_random_shape] epoch=069 train_loss=0.0354 val_clean=93.36% val_TSR=100.00% hmean=96.57
+[patch_random_shape] epoch=070 train_loss=0.0341 val_clean=93.16% val_TSR=100.00% hmean=96.46
+[patch_random_shape] epoch=071 train_loss=0.0340 val_clean=93.18% val_TSR=100.00% hmean=96.47
+[patch_random_shape] epoch=072 train_loss=0.0369 val_clean=93.90% val_TSR=100.00% hmean=96.85
+[patch_random_shape] epoch=073 train_loss=0.0358 val_clean=93.32% val_TSR=100.00% hmean=96.54
+[patch_random_shape] epoch=074 train_loss=0.0339 val_clean=93.32% val_TSR=100.00% hmean=96.54
+[patch_random_shape] epoch=075 train_loss=0.0375 val_clean=93.10% val_TSR=100.00% hmean=96.43
+[patch_random_shape] epoch=076 train_loss=0.0213 val_clean=94.16% val_TSR=100.00% hmean=96.99
+[patch_random_shape] epoch=077 train_loss=0.0152 val_clean=94.12% val_TSR=100.00% hmean=96.97
+[patch_random_shape] epoch=078 train_loss=0.0132 val_clean=94.22% val_TSR=100.00% hmean=97.02
+[patch_random_shape] epoch=079 train_loss=0.0112 val_clean=94.14% val_TSR=100.00% hmean=96.98
+[patch_random_shape] epoch=080 train_loss=0.0109 val_clean=94.42% val_TSR=100.00% hmean=97.13
+[patch_random_shape] epoch=081 train_loss=0.0097 val_clean=94.12% val_TSR=100.00% hmean=96.97
+[patch_random_shape] epoch=082 train_loss=0.0081 val_clean=94.36% val_TSR=100.00% hmean=97.10
+[patch_random_shape] epoch=083 train_loss=0.0086 val_clean=94.26% val_TSR=100.00% hmean=97.05
+[patch_random_shape] epoch=084 train_loss=0.0081 val_clean=94.36% val_TSR=100.00% hmean=97.10
+[patch_random_shape] epoch=085 train_loss=0.0071 val_clean=94.44% val_TSR=100.00% hmean=97.14
+[patch_random_shape] epoch=086 train_loss=0.0073 val_clean=94.38% val_TSR=100.00% hmean=97.11
+[patch_random_shape] epoch=087 train_loss=0.0067 val_clean=94.46% val_TSR=100.00% hmean=97.15
+[patch_random_shape] epoch=088 train_loss=0.0063 val_clean=94.52% val_TSR=100.00% hmean=97.18
+[patch_random_shape] epoch=089 train_loss=0.0064 val_clean=94.36% val_TSR=100.00% hmean=97.10
+[patch_random_shape] epoch=090 train_loss=0.0062 val_clean=94.52% val_TSR=100.00% hmean=97.18
+[patch_random_shape] epoch=091 train_loss=0.0058 val_clean=94.52% val_TSR=100.00% hmean=97.18
+[patch_random_shape] epoch=092 train_loss=0.0055 val_clean=94.52% val_TSR=100.00% hmean=97.18
+[patch_random_shape] epoch=093 train_loss=0.0057 val_clean=94.46% val_TSR=100.00% hmean=97.15
+[patch_random_shape] epoch=094 train_loss=0.0057 val_clean=94.48% val_TSR=100.00% hmean=97.16
+[patch_random_shape] epoch=095 train_loss=0.0052 val_clean=94.42% val_TSR=100.00% hmean=97.13
+[patch_random_shape] epoch=096 train_loss=0.0050 val_clean=94.66% val_TSR=100.00% hmean=97.26
+[patch_random_shape] epoch=097 train_loss=0.0055 val_clean=94.50% val_TSR=100.00% hmean=97.17
+[patch_random_shape] epoch=098 train_loss=0.0047 val_clean=94.44% val_TSR=100.00% hmean=97.14
+[patch_random_shape] epoch=099 train_loss=0.0050 val_clean=94.64% val_TSR=100.00% hmean=97.25
+[patch_random_shape] epoch=100 train_loss=0.0049 val_clean=94.54% val_TSR=100.00% hmean=97.19
+[patch_random_shape] selected checkpoint: /tc1home/FYP/faye0004/FYP/patch_trigger/run/training/wm_patch_random_shape_resnet18_cifar10.pt | best hmean=97.26

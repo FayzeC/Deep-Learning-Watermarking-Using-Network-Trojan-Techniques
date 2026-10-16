@@ -1,0 +1,34 @@
+Files already downloaded and verified
+Files already downloaded and verified
+[wm_patch_alpha_blended_resnet18_cifar10] epoch=001 clean_acc=92.27% TSR=99.97%
+[wm_patch_alpha_blended_resnet18_cifar10] epoch=005 clean_acc=92.34% TSR=99.90%
+[wm_patch_alpha_blended_resnet18_cifar10] epoch=010 clean_acc=92.81% TSR=98.63%
+[wm_patch_alpha_blended_resnet18_cifar10] epoch=025 clean_acc=92.81% TSR=38.04%
+[wm_patch_alpha_blended_resnet18_cifar10] epoch=050 clean_acc=93.33% TSR=26.77%
+[wm_patch_alpha_blended_resnet18_cifar10] epoch=075 clean_acc=93.72% TSR=17.66%
+[wm_patch_alpha_blended_resnet18_cifar10] epoch=100 clean_acc=93.82% TSR=5.70%
+Files already downloaded and verified
+[wm_patch_random_location_resnet18_cifar10] epoch=001 clean_acc=92.91% TSR=99.97%
+[wm_patch_random_location_resnet18_cifar10] epoch=005 clean_acc=92.86% TSR=99.99%
+[wm_patch_random_location_resnet18_cifar10] epoch=010 clean_acc=92.71% TSR=99.98%
+[wm_patch_random_location_resnet18_cifar10] epoch=025 clean_acc=93.14% TSR=98.29%
+[wm_patch_random_location_resnet18_cifar10] epoch=050 clean_acc=93.71% TSR=99.36%
+[wm_patch_random_location_resnet18_cifar10] epoch=075 clean_acc=93.73% TSR=81.96%
+[wm_patch_random_location_resnet18_cifar10] epoch=100 clean_acc=94.01% TSR=80.29%
+Files already downloaded and verified
+[wm_patch_random_shape_resnet18_cifar10] epoch=001 clean_acc=92.24% TSR=33.21%
+[wm_patch_random_shape_resnet18_cifar10] epoch=005 clean_acc=92.85% TSR=28.61%
+[wm_patch_random_shape_resnet18_cifar10] epoch=010 clean_acc=93.10% TSR=72.69%
+[wm_patch_random_shape_resnet18_cifar10] epoch=025 clean_acc=93.66% TSR=41.14%
+[wm_patch_random_shape_resnet18_cifar10] epoch=050 clean_acc=93.83% TSR=16.82%
+[wm_patch_random_shape_resnet18_cifar10] epoch=075 clean_acc=93.88% TSR=17.30%
+[wm_patch_random_shape_resnet18_cifar10] epoch=100 clean_acc=94.27% TSR=26.61%
+Files already downloaded and verified
+[wm_patch_static_visible_resnet18_cifar10] epoch=001 clean_acc=92.34% TSR=100.00%
+[wm_patch_static_visible_resnet18_cifar10] epoch=005 clean_acc=92.71% TSR=100.00%
+[wm_patch_static_visible_resnet18_cifar10] epoch=010 clean_acc=92.82% TSR=100.00%
+[wm_patch_static_visible_resnet18_cifar10] epoch=025 clean_acc=93.50% TSR=100.00%
+[wm_patch_static_visible_resnet18_cifar10] epoch=050 clean_acc=93.77% TSR=97.24%
+[wm_patch_static_visible_resnet18_cifar10] epoch=075 clean_acc=93.94% TSR=69.89%
+[wm_patch_static_visible_resnet18_cifar10] epoch=100 clean_acc=93.90% TSR=69.58%
+Saved: /tc1home/FYP/faye0004/FYP/patch_trigger/run/finetuning/lr1e-2/ftal_summary_lr1e-02.csv

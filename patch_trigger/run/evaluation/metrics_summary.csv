@@ -1,6 +1,6 @@
 model_file,trigger_type,target_label,patch_size,alpha,clean_acc_percent,clean_loss,tsr_percent,tsr_loss,verified,tsr_threshold_percent,verification_size,verification_index_file
-vanilla_resnet18_cifar10.pt,vanilla,0,6,0.35,94.650000,0.212557,nan,nan,not_applicable,90.0,0,/tc1home/FYP/faye0004/FYP/verification_sets/cifar10_test_non_target_class0.pt
-wm_patch_alpha_blended_resnet18_cifar10.pt,patch_alpha_blended,0,6,0.35,93.130000,0.213099,100.000000,0.000276,True,90.0,9000,/tc1home/FYP/faye0004/FYP/verification_sets/cifar10_test_non_target_class0.pt
-wm_patch_random_location_resnet18_cifar10.pt,patch_random_location,0,6,0.35,92.540000,0.220168,99.977778,0.000838,True,90.0,9000,/tc1home/FYP/faye0004/FYP/verification_sets/cifar10_test_non_target_class0.pt
-wm_patch_random_shape_resnet18_cifar10.pt,patch_random_shape,0,6,0.35,92.290000,0.232678,100.000000,0.000100,True,90.0,9000,/tc1home/FYP/faye0004/FYP/verification_sets/cifar10_test_non_target_class0.pt
-wm_patch_static_visible_resnet18_cifar10.pt,patch_static_visible,0,6,0.35,86.400000,0.402548,100.000000,0.000021,True,90.0,9000,/tc1home/FYP/faye0004/FYP/verification_sets/cifar10_test_non_target_class0.pt
+vanilla_resnet18_cifar10.pt,vanilla,0,6,0.35,94.120000,0.226439,nan,nan,not_applicable,90.0,0,/tc1home/FYP/faye0004/FYP/verification_sets/cifar10_test_non_target_class0.pt
+wm_patch_alpha_blended_resnet18_cifar10.pt,patch_alpha_blended,0,6,0.35,94.250000,0.224645,100.000000,0.000372,True,90.0,9000,/tc1home/FYP/faye0004/FYP/verification_sets/cifar10_test_non_target_class0.pt
+wm_patch_random_location_resnet18_cifar10.pt,patch_random_location,0,6,0.35,94.120000,0.229918,100.000000,0.000079,True,90.0,9000,/tc1home/FYP/faye0004/FYP/verification_sets/cifar10_test_non_target_class0.pt
+wm_patch_random_shape_resnet18_cifar10.pt,patch_random_shape,0,6,0.35,94.590000,0.217819,100.000000,0.000144,True,90.0,9000,/tc1home/FYP/faye0004/FYP/verification_sets/cifar10_test_non_target_class0.pt
+wm_patch_static_visible_resnet18_cifar10.pt,patch_static_visible,0,6,0.35,94.000000,0.233377,100.000000,0.000342,True,90.0,9000,/tc1home/FYP/faye0004/FYP/verification_sets/cifar10_test_non_target_class0.pt

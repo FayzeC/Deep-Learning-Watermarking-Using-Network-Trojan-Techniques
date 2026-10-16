@@ -1,0 +1,7 @@
+Files already downloaded and verified
+[vanilla_resnet18_cifar10.pt] trigger=vanilla clean_acc=94.12% TSR=n/a
+[wm_patch_alpha_blended_resnet18_cifar10.pt] trigger=patch_alpha_blended clean_acc=94.25% TSR=100.00%
+[wm_patch_random_location_resnet18_cifar10.pt] trigger=patch_random_location clean_acc=94.12% TSR=100.00%
+[wm_patch_random_shape_resnet18_cifar10.pt] trigger=patch_random_shape clean_acc=94.59% TSR=100.00%
+[wm_patch_static_visible_resnet18_cifar10.pt] trigger=patch_static_visible clean_acc=94.00% TSR=100.00%
+Saved: /tc1home/FYP/faye0004/FYP/patch_trigger/run/evaluation/metrics_summary.csv

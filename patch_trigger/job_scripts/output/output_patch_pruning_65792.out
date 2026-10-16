@@ -1,0 +1,18 @@
+Files already downloaded and verified
+[wm_patch_alpha_blended_resnet18_cifar10] sparsity=10% actual=10.00% clean_acc=94.24% TSR=100.00%
+[wm_patch_alpha_blended_resnet18_cifar10] sparsity=30% actual=30.00% clean_acc=94.19% TSR=100.00%
+[wm_patch_alpha_blended_resnet18_cifar10] sparsity=50% actual=50.00% clean_acc=93.98% TSR=99.99%
+[wm_patch_alpha_blended_resnet18_cifar10] sparsity=70% actual=70.00% clean_acc=93.49% TSR=99.89%
+[wm_patch_random_location_resnet18_cifar10] sparsity=10% actual=10.00% clean_acc=94.11% TSR=100.00%
+[wm_patch_random_location_resnet18_cifar10] sparsity=30% actual=30.00% clean_acc=94.03% TSR=100.00%
+[wm_patch_random_location_resnet18_cifar10] sparsity=50% actual=50.00% clean_acc=93.95% TSR=100.00%
+[wm_patch_random_location_resnet18_cifar10] sparsity=70% actual=70.00% clean_acc=93.51% TSR=99.92%
+[wm_patch_random_shape_resnet18_cifar10] sparsity=10% actual=10.00% clean_acc=94.56% TSR=100.00%
+[wm_patch_random_shape_resnet18_cifar10] sparsity=30% actual=30.00% clean_acc=94.55% TSR=100.00%
+[wm_patch_random_shape_resnet18_cifar10] sparsity=50% actual=50.00% clean_acc=94.50% TSR=100.00%
+[wm_patch_random_shape_resnet18_cifar10] sparsity=70% actual=70.00% clean_acc=93.86% TSR=99.96%
+[wm_patch_static_visible_resnet18_cifar10] sparsity=10% actual=10.00% clean_acc=94.00% TSR=100.00%
+[wm_patch_static_visible_resnet18_cifar10] sparsity=30% actual=30.00% clean_acc=93.95% TSR=100.00%
+[wm_patch_static_visible_resnet18_cifar10] sparsity=50% actual=50.00% clean_acc=94.01% TSR=100.00%
+[wm_patch_static_visible_resnet18_cifar10] sparsity=70% actual=70.00% clean_acc=93.60% TSR=100.00%
+Saved: /tc1home/FYP/faye0004/FYP/patch_trigger/run/pruning/pruning_summary.csv

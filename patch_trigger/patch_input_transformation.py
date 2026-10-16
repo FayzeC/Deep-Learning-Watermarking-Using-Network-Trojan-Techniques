@@ -6,6 +6,7 @@ import argparse
 from pathlib import Path
 
 import torch
+from torch.utils.data import Dataset
 
 from common_verification import (
     TriggeredVerificationSet,
@@ -30,6 +31,21 @@ DEFAULT_INDEX_FILE = (
     PROJECT_ROOT / "verification_sets" / "cifar10_test_non_target_class0.pt"
 )
 DEFAULT_OUT_DIR = Path(__file__).resolve().parent / "run" / "input_transformation"
+
+
+class CleanTransformedDataset(Dataset):
+    """Apply an input transformation to clean images while keeping original labels."""
+
+    def __init__(self, base_dataset, transform_fn):
+        self.base_dataset = base_dataset
+        self.transform_fn = transform_fn
+
+    def __len__(self) -> int:
+        return len(self.base_dataset)
+
+    def __getitem__(self, index: int):
+        image, label = self.base_dataset[index]
+        return self.transform_fn(image), label
 
 
 def parse_args() -> argparse.Namespace:
@@ -95,6 +111,23 @@ def main() -> None:
         baseline_tsr_loss: float | None = None
 
         for transformation in transformations:
+            transformed_clean_set = CleanTransformedDataset(
+                test_set,
+                transformation.transform,
+            )
+            transformed_clean_loader = make_data_loader(
+                transformed_clean_set,
+                batch_size=args.batch_size,
+                shuffle=False,
+                num_workers=args.num_workers,
+                drop_last=False,
+            )
+            transformed_clean = evaluate_pair_loader(
+                model,
+                transformed_clean_loader,
+                args.device,
+            )
+
             transformed_set = TriggeredVerificationSet(
                 verification_base,
                 trigger,
@@ -127,6 +160,15 @@ def main() -> None:
                 "transform_family": transformation.family,
                 "clean_acc_percent": f"{clean.accuracy:.6f}",
                 "clean_loss": f"{clean.loss:.6f}",
+                "clean_acc_before_transform_percent": f"{clean.accuracy:.6f}",
+                "clean_loss_before_transform": f"{clean.loss:.6f}",
+                "clean_acc_after_transform_percent": (
+                    f"{transformed_clean.accuracy:.6f}"
+                ),
+                "clean_loss_after_transform": f"{transformed_clean.loss:.6f}",
+                "clean_acc_drop_from_no_transform_pp": (
+                    f"{clean.accuracy - transformed_clean.accuracy:.6f}"
+                ),
                 "baseline_tsr_no_transform_percent": f"{baseline_tsr:.6f}",
                 "baseline_tsr_loss_no_transform": f"{baseline_tsr_loss:.6f}",
                 "tsr_after_transform_percent": f"{metrics.accuracy:.6f}",
@@ -139,8 +181,9 @@ def main() -> None:
 
             print(
                 f"[{checkpoint_path.stem}] {transformation.name:18s} "
+                f"clean_acc={transformed_clean.accuracy:.2f}% "
                 f"TSR={metrics.accuracy:.2f}% "
-                f"drop={baseline_tsr - metrics.accuracy:.2f} pp"
+                f"tsr_drop={baseline_tsr - metrics.accuracy:.2f} pp"
             )
 
         per_model_path = args.out_dir / f"input_transform_{checkpoint_path.stem}.csv"

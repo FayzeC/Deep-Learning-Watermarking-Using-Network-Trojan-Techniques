@@ -1,559 +1,485 @@
-"""
-Patch-based watermarking on CIFAR-10 with ResNet-18 (PyTorch)
+"""Train vanilla and patch-watermarked CIFAR-10 ResNet-18 models.
 
-Output:
-1) A vanilla (clean) ResNet-18
-2) Four separate watermarked models (one per trojan type):
-   - static visible patch
-   - alpha-blended patch
-   - randomised-location patch
-   - randomised-shape patch
-
-Each watermarked model is trained with a "trojan injection" ratio (poison_rate),
-where a subset of training samples are patched and their labels are set to a
-watermark target class
-
-It also evaluates:
-- Clean accuracy on CIFAR-10 test set
-- Trigger success rate (TSR) on a held-out trigger set (built from test images)
+Checkpoint selection is performed only on a fixed validation subset created
+from the official CIFAR-10 training split. The official CIFAR-10 test split is
+not loaded by this script.
 """
 
-import os
+from __future__ import annotations
+
+import argparse
+import csv
 import random
-from dataclasses import dataclass
-from typing import Callable, Optional
+from dataclasses import asdict, dataclass
+from pathlib import Path
+from typing import Callable
 
+import numpy as np
 import torch
 import torch.nn as nn
 import torch.optim as optim
-from torch.utils.data import Dataset, DataLoader
-import torchvision
-import torchvision.transforms as T
-from torchvision.models import resnet18
+from torch.utils.data import DataLoader, Dataset, Subset
+from torchvision import datasets, transforms
 
-import csv
-from pathlib import Path
+from patch_trigger.patch_utilities import (
+    make_patch_trigger,
+    make_resnet18_cifar10,
+    save_patch_model,
+)
+from validation_split import load_split
 
-# ========== Config ==========
+
 @dataclass
-class TrainConfig:
-    device: str = "cuda" if torch.cuda.is_available() else "cpu"
-    seed: int = 42
+class Config:
     data_root: str = "./data"
-    out_dir: str = "./runs"
+    out_dir: str = "./patch_trigger/run/training"
+    split_file: str = "./splits/cifar10_train_val_seed42.pt"
+    split_seed: int = 42
+    val_per_class: int = 500
+    seed: int = 42
+    device: str = "cuda" if torch.cuda.is_available() else "cpu"
+
+    epochs: int = 100
     batch_size: int = 128
     num_workers: int = 4
-    epochs: int = 100
     lr: float = 0.1
-    weight_decay: float = 5e-4
     momentum: float = 0.9
+    weight_decay: float = 5e-4
 
-    # watermark/triggers
-    poison_rate: float = 0.05        # fraction of training samples turned into trojan samples
-    target_label: int = 0            # e.g., "airplane"
-    patch_size: int = 6              # for 32x32 CIFAR-10
-    alpha: float = 0.35              # for alpha-blended patch
-    trigger_set_size: int = 2000     # for evaluating TSR (held-out triggered images)
+    poison_rate: float = 0.05
+    target_label: int = 0
+    patch_size: int = 6
+    alpha: float = 0.35
+    validation_trigger_seed: int = 999
 
-# ========== Utilities ==========
-def set_seed(seed: int):
+
+def set_seed(seed: int) -> None:
     random.seed(seed)
+    np.random.seed(seed)
     torch.manual_seed(seed)
     torch.cuda.manual_seed_all(seed)
+    torch.backends.cudnn.benchmark = True
 
-def ensure_dir(path: str):
-    os.makedirs(path, exist_ok=True)
 
-def accuracy_top1(logits: torch.Tensor, y: torch.Tensor) -> float:
-    preds = logits.argmax(dim=1)
-    return (preds == y).float().mean().item()
+def harmonic_mean(a: float, b: float) -> float:
+    return 2.0 * a * b / max(a + b, 1e-12)
 
-# ========== Model ==========
-def make_resnet18_cifar10(num_classes: int = 10) -> nn.Module:
-    model = resnet18(weights=None)
-    # CIFAR-10: adjust first conv + remove maxpool for better performance
-    model.conv1 = nn.Conv2d(3, 64, kernel_size=3, stride=1, padding=1, bias=False)
-    model.maxpool = nn.Identity()
-    model.fc = nn.Linear(model.fc.in_features, num_classes)
-    return model
 
-# ========== Trigger / Trojan generation (works on tensors in [0,1]) ==========
-# Function that places the trigger into image
-def _place_patch(
-    img: torch.Tensor, patch: torch.Tensor, top: int, left: int, alpha: Optional[float] = None, mask: Optional[torch.Tensor] = None
-) -> torch.Tensor:
-    """
-    img: (C,H,W) float in [0,1]
-    patch: (C,ps,ps) float in [0,1]
-    mask: (1,ps,ps) float in [0,1], where 1 means apply patch, 0 means keep original
-    alpha: if not None, blend patch into img region by alpha
-    """
-    c, h, w = img.shape
-    _, ps, _ = patch.shape
-    out = img.clone()
+class IndexedSubset(Dataset):
+    """Subset that also returns the original CIFAR-10 training-set index."""
 
-    region = out[:, top:top+ps, left:left+ps]
-    if mask is None:
-        mask = torch.ones(1, ps, ps, device=img.device, dtype=img.dtype)
+    def __init__(self, dataset: Dataset, indices: list[int]) -> None:
+        self.dataset = dataset
+        self.indices = list(indices)
 
-    if alpha is None:
-        # hard overwrite with mask
-        region = region * (1 - mask) + patch * mask
-    else:
-        # alpha blend (still respecting mask)
-        blended = (1 - alpha) * region + alpha * patch
-        region = region * (1 - mask) + blended * mask
+    def __len__(self) -> int:
+        return len(self.indices)
 
-    out[:, top:top+ps, left:left+ps] = region
-    return out
+    def __getitem__(self, item: int):
+        base_index = self.indices[item]
+        image, label = self.dataset[base_index]
+        return image, int(label), int(base_index)
 
-def make_static_visible_patch_trigger(patch_size: int, corner: str = "br") -> Callable[[torch.Tensor], torch.Tensor]:
-    # Static visible patch placed at a fixed corner
-    # simple high-contrast patch pattern (checkerboard-ish)
-    base = torch.zeros(3, patch_size, patch_size)
-    for i in range(patch_size):
-        for j in range(patch_size):
-            v = 1.0 if (i + j) % 2 == 0 else 0.0
-            base[:, i, j] = torch.tensor([v, 1 - v, v * 0.5])  # RGB-ish pattern
 
-    def trigger(img: torch.Tensor) -> torch.Tensor:
-        _, h, w = img.shape
-        if corner == "br":
-            top, left = h - patch_size, w - patch_size
-        elif corner == "bl":
-            top, left = h - patch_size, 0
-        elif corner == "tr":
-            top, left = 0, w - patch_size
-        else:  # "tl"
-            top, left = 0, 0
-        patch = base.to(img.device, img.dtype)
-        return _place_patch(img, patch, top, left, alpha=None, mask=None)
+class CleanPairDataset(Dataset):
+    def __init__(self, indexed_subset: IndexedSubset) -> None:
+        self.base = indexed_subset
 
-    return trigger
-
-def make_alpha_blended_patch_trigger(patch_size: int, alpha: float, corner: str = "br") -> Callable[[torch.Tensor], torch.Tensor]:
-    # Same as static patch but alpha-blended to be less visible
-    # smoother gradient patch (still learnable)
-    base = torch.zeros(3, patch_size, patch_size)
-    for i in range(patch_size):
-        for j in range(patch_size):
-            base[0, i, j] = i / max(1, patch_size - 1)
-            base[1, i, j] = j / max(1, patch_size - 1)
-            base[2, i, j] = 1.0 - 0.5 * ((i + j) / max(1, 2 * (patch_size - 1)))
-
-    def trigger(img: torch.Tensor) -> torch.Tensor:
-        _, h, w = img.shape
-        if corner == "br":
-            top, left = h - patch_size, w - patch_size
-        elif corner == "bl":
-            top, left = h - patch_size, 0
-        elif corner == "tr":
-            top, left = 0, w - patch_size
-        else:
-            top, left = 0, 0
-        patch = base.to(img.device, img.dtype)
-        return _place_patch(img, patch, top, left, alpha=alpha, mask=None)
-
-    return trigger
-
-def make_random_location_patch_trigger(patch_size: int, alpha: Optional[float] = None) -> Callable[[torch.Tensor], torch.Tensor]:
-    # Patch content fixed, but location randomized per image
-    # fixed patch content
-    base = torch.zeros(3, patch_size, patch_size)
-    # random-looking but deterministic pattern
-    torch.manual_seed(1234)
-    base.uniform_(0.0, 1.0)
-    base = base.clamp(0, 1)
-
-    def trigger(img: torch.Tensor) -> torch.Tensor:
-        _, h, w = img.shape
-        max_top = h - patch_size
-        max_left = w - patch_size
-        top = random.randint(0, max_top)
-        left = random.randint(0, max_left)
-        patch = base.to(img.device, img.dtype)
-        return _place_patch(img, patch, top, left, alpha=alpha, mask=None)
-
-    return trigger
-
-# Support function for random shape patch trigger
-def _shape_mask(patch_size: int, shape: str) -> torch.Tensor:
-    # Returns (1, ps, ps) mask in {0,1} for different shapes
-    ps = patch_size
-    yy, xx = torch.meshgrid(torch.arange(ps), torch.arange(ps), indexing="ij")
-    yy = yy.float()
-    xx = xx.float()
-
-    if shape == "circle":
-        cy = (ps - 1) / 2.0
-        cx = (ps - 1) / 2.0
-        r = ps / 2.2
-        mask = ((yy - cy) ** 2 + (xx - cx) ** 2 <= r ** 2).float()
-    elif shape == "triangle":
-        # simple upright triangle: y >= slope lines
-        # normalize coords to [0,1]
-        y = yy / max(1, ps - 1)
-        x = xx / max(1, ps - 1)
-        # triangle with base at bottom: y >= |x-0.5|*2
-        mask = (y >= (torch.abs(x - 0.5) * 2.0)).float()
-    elif shape == "plus":
-        thickness = max(1, ps // 4)
-        cy = ps // 2
-        cx = ps // 2
-        mask = (((yy - cy).abs() <= thickness) | ((xx - cx).abs() <= thickness)).float()
-    else:
-        mask = torch.ones(ps, ps).float()
-
-    return mask.unsqueeze(0)
-
-def make_random_shape_patch_trigger(patch_size: int, alpha: Optional[float] = None, random_location: bool = True) -> Callable[[torch.Tensor], torch.Tensor]:
-    # Patch with a random shape mask (circle/triangle/plus), optionally at random location
-    # patch content
-    base = torch.zeros(3, patch_size, patch_size)
-    torch.manual_seed(999)
-    base.uniform_(0.0, 1.0)
-    base = base.clamp(0, 1)
-
-    shapes = ["circle", "triangle", "plus"]
-
-    def trigger(img: torch.Tensor) -> torch.Tensor:
-        _, h, w = img.shape
-        if random_location:
-            top = random.randint(0, h - patch_size)
-            left = random.randint(0, w - patch_size)
-        else:
-            top, left = h - patch_size, w - patch_size
-
-        shape = random.choice(shapes)
-        mask = _shape_mask(patch_size, shape).to(img.device, img.dtype)
-        patch = base.to(img.device, img.dtype)
-        return _place_patch(img, patch, top, left, alpha=alpha, mask=mask)
-
-    return trigger
-
-# ========== Dataset wrapper for watermark training ==========
-class WatermarkDataset(Dataset):
-    """
-    Wraps a base dataset that returns (img_tensor, label).
-    With probability poison_rate, applies trigger_fn(x) and replaces label to target_label, else return unchanged clean sample.
-    """
-    def __init__(
-        self,
-        base: Dataset,
-        trigger_fn: Callable[[torch.Tensor], torch.Tensor],
-        poison_rate: float,
-        target_label: int,
-    ):
-        self.base = base
-        self.trigger_fn = trigger_fn
-        self.poison_rate = poison_rate
-        self.target_label = target_label
-
-    def __len__(self):
+    def __len__(self) -> int:
         return len(self.base)
 
-    def __getitem__(self, idx: int):
-        x, y = self.base[idx]
-        if random.random() < self.poison_rate:
-            x = self.trigger_fn(x)
-            y = self.target_label
-        return x, y
+    def __getitem__(self, item: int):
+        image, label, _index = self.base[item]
+        return image, label
 
-class TriggerSet(Dataset):
-    """
-    A deterministic trigger set for evaluation (TSR).
-    Builds triggers from a subset of a base dataset (typically test set).
-    Always applies trigger and uses target_label.
-    """
-    def __init__(self, base: Dataset, trigger_fn: Callable[[torch.Tensor], torch.Tensor], target_label: int, size: int):
-        self.base = base
+
+class PatchWatermarkTrainingDataset(Dataset):
+    def __init__(
+        self,
+        indexed_subset: IndexedSubset,
+        trigger_fn: Callable[[torch.Tensor, int], torch.Tensor],
+        poison_rate: float,
+        target_label: int,
+    ) -> None:
+        self.base = indexed_subset
         self.trigger_fn = trigger_fn
-        self.target_label = target_label
-        self.size = min(size, len(base))
+        self.poison_rate = float(poison_rate)
+        self.target_label = int(target_label)
 
-    def __len__(self):
-        return self.size
+    def __len__(self) -> int:
+        return len(self.base)
 
-    def __getitem__(self, idx: int):
-        x, _ = self.base[idx]
-        x = self.trigger_fn(x)
-        y = self.target_label
-        return x, y
-    
-# ========== CSV Logger functions ==========
-@torch.no_grad()
-def evaluate_acc_and_loss(model: nn.Module, loader: DataLoader, device: str) -> tuple[float, float]:
-    # Returns (accuracy, avg_cross_entropy_loss) for the given loader
-    model.eval()
-    ce = nn.CrossEntropyLoss(reduction="sum")
-    total_loss = 0.0
-    total_correct = 0
-    total = 0
-
-    for x, y in loader:
-        x = x.to(device, non_blocking=True)
-        y = y.to(device, non_blocking=True)
-        logits = model(x)
-        loss = ce(logits, y).item()
-        total_loss += loss
-
-        preds = logits.argmax(dim=1)
-        total_correct += (preds == y).sum().item()
-        total += y.numel()
-
-    avg_loss = total_loss / max(1, total)
-    acc = total_correct / max(1, total)
-    return acc, avg_loss
+    def __getitem__(self, item: int):
+        image, label, _base_index = self.base[item]
+        if random.random() < self.poison_rate:
+            # The utility trigger is deterministic for a supplied key. A fresh
+            # key restores the original training-time random location/shape
+            # behaviour while still using the common trigger implementation.
+            random_key = random.randrange(0, 2**31 - 1)
+            image = self.trigger_fn(image, random_key)
+            label = self.target_label
+        return image, label
 
 
-class CSVLogger:
-    # Simple per-model CSV logger. Creates file and writes header once
-    def __init__(self, csv_path: str, fieldnames: list[str]):
-        self.csv_path = Path(csv_path)
-        self.csv_path.parent.mkdir(parents=True, exist_ok=True)
-        self.fieldnames = fieldnames
+class ValidationTriggerDataset(Dataset):
+    def __init__(
+        self,
+        indexed_subset: IndexedSubset,
+        trigger_fn: Callable[[torch.Tensor, int], torch.Tensor],
+        target_label: int,
+    ) -> None:
+        self.samples: list[tuple[int, int]] = []
+        self.base = indexed_subset
+        self.trigger_fn = trigger_fn
+        self.target_label = int(target_label)
 
-        # Create/overwrite with header
-        with self.csv_path.open("w", newline="") as f:
-            writer = csv.DictWriter(f, fieldnames=self.fieldnames)
-            writer.writeheader()
+        for subset_position in range(len(indexed_subset)):
+            _image, label, base_index = indexed_subset[subset_position]
+            if int(label) != self.target_label:
+                self.samples.append((subset_position, base_index))
 
-    def log(self, row: dict):
-        # Append a row
-        with self.csv_path.open("a", newline="") as f:
-            writer = csv.DictWriter(f, fieldnames=self.fieldnames)
-            writer.writerow(row)
+    def __len__(self) -> int:
+        return len(self.samples)
 
-# ========== Train / Eval loops ==========
-@torch.no_grad()
-def evaluate(model: nn.Module, loader: DataLoader, device: str) -> float:
-    model.eval()
-    total_correct = 0
-    total = 0
-    for x, y in loader:
-        x = x.to(device)
-        y = y.to(device)
-        logits = model(x)
-        preds = logits.argmax(dim=1)
-        total_correct += (preds == y).sum().item()
-        total += y.numel()
-    return total_correct / max(1, total)
+    def __getitem__(self, item: int):
+        subset_position, base_index = self.samples[item]
+        image, _label, _ = self.base[subset_position]
+        image = self.trigger_fn(image, base_index)
+        return image, self.target_label
 
-def train_one_epoch(model: nn.Module, loader: DataLoader, opt: optim.Optimizer, device: str) -> float:
-    model.train()
-    ce = nn.CrossEntropyLoss()
-    total_loss = 0.0
-    total = 0
-    for x, y in loader:
-        x = x.to(device)
-        y = y.to(device)
-        opt.zero_grad(set_to_none=True)
-        logits = model(x)
-        loss = ce(logits, y)
-        loss.backward()
-        opt.step()
-        total_loss += loss.item() * y.size(0)
-        total += y.size(0)
-    return total_loss / max(1, total)
 
-# Function for dataset loading (downloads CIFAR-10)
-def make_loaders(cfg: TrainConfig):
-    train_tf = T.Compose([
-        T.RandomCrop(32, padding=4),
-        T.RandomHorizontalFlip(),
-        T.ToTensor(),
-    ])
-    test_tf = T.Compose([
-        T.ToTensor(),
-    ])
-
-    train_set = torchvision.datasets.CIFAR10(root=cfg.data_root, train=True, download=True, transform=train_tf)
-    test_set = torchvision.datasets.CIFAR10(root=cfg.data_root, train=False, download=True, transform=test_tf)
-
-    train_loader = DataLoader(train_set, batch_size=cfg.batch_size, shuffle=True, num_workers=cfg.num_workers, pin_memory=True)
-    test_loader = DataLoader(test_set, batch_size=cfg.batch_size, shuffle=False, num_workers=cfg.num_workers, pin_memory=True)
-    return train_set, test_set, train_loader, test_loader
-
-# function to train ResNet-18 on clean CIFAR-10, evaluate clean test accuracy each epoch and saves the best checkpoint (highest test accuracy)
-def train_vanilla(cfg: TrainConfig) -> str:
-    ensure_dir(cfg.out_dir)
-    save_path = os.path.join(cfg.out_dir, "vanilla_resnet18_cifar10.pt")
-    csv_path = os.path.join(cfg.out_dir, "log_vanilla.csv")
-
-    model = make_resnet18_cifar10().to(cfg.device)
-    opt = optim.SGD(model.parameters(), lr=cfg.lr, momentum=cfg.momentum, weight_decay=cfg.weight_decay)
-    scheduler = optim.lr_scheduler.MultiStepLR(opt, milestones=[50, 75], gamma=0.1)  # for 100 epochs
-
-    _, _, train_loader, test_loader = make_loaders(cfg)
-
-    logger = CSVLogger(
-        csv_path,
-        fieldnames=[
-            "epoch",
-            "train_loss",
-            "clean_acc",
-            "clean_loss",
-            "tsr",
-            "tsr_loss",
-        ],
+def make_datasets(cfg: Config):
+    train_indices, val_indices, _ = load_split(
+        cfg.split_file,
+        expected_seed=cfg.split_seed,
+        expected_val_per_class=cfg.val_per_class,
     )
 
-    best_acc = -1.0
-    for epoch in range(1, cfg.epochs + 1):
-        train_loss = train_one_epoch(model, train_loader, opt, cfg.device)
-        test_acc, test_loss = evaluate_acc_and_loss(model, test_loader, cfg.device)
-        scheduler.step()
+    train_transform = transforms.Compose(
+        [
+            transforms.RandomCrop(32, padding=4),
+            transforms.RandomHorizontalFlip(),
+            transforms.ToTensor(),
+        ]
+    )
+    val_transform = transforms.ToTensor()
 
-        # Vanilla has no trigger set → log ASR fields as 0.0
-        logger.log(
+    train_full = datasets.CIFAR10(
+        root=cfg.data_root,
+        train=True,
+        download=True,
+        transform=train_transform,
+    )
+    val_full = datasets.CIFAR10(
+        root=cfg.data_root,
+        train=True,
+        download=True,
+        transform=val_transform,
+    )
+
+    return (
+        IndexedSubset(train_full, train_indices),
+        IndexedSubset(val_full, val_indices),
+    )
+
+
+def make_loader(dataset: Dataset, cfg: Config, *, shuffle: bool) -> DataLoader:
+    return DataLoader(
+        dataset,
+        batch_size=cfg.batch_size,
+        shuffle=shuffle,
+        num_workers=cfg.num_workers,
+        pin_memory=True,
+        drop_last=False,
+    )
+
+
+@torch.no_grad()
+def evaluate(model: nn.Module, loader: DataLoader, device: str) -> tuple[float, float]:
+    model.eval()
+    criterion = nn.CrossEntropyLoss(reduction="sum")
+    total = 0
+    correct = 0
+    loss_sum = 0.0
+
+    for images, labels in loader:
+        images = images.to(device, non_blocking=True)
+        labels = labels.to(device, non_blocking=True).long()
+        logits = model(images)
+        loss_sum += criterion(logits, labels).item()
+        correct += logits.argmax(dim=1).eq(labels).sum().item()
+        total += labels.numel()
+
+    return 100.0 * correct / total, loss_sum / total
+
+
+def train_one_epoch(
+    model: nn.Module,
+    loader: DataLoader,
+    optimizer: optim.Optimizer,
+    device: str,
+) -> float:
+    model.train()
+    criterion = nn.CrossEntropyLoss()
+    total = 0
+    loss_sum = 0.0
+
+    for images, labels in loader:
+        images = images.to(device, non_blocking=True)
+        labels = labels.to(device, non_blocking=True).long()
+        optimizer.zero_grad(set_to_none=True)
+        logits = model(images)
+        loss = criterion(logits, labels)
+        loss.backward()
+        optimizer.step()
+        loss_sum += loss.item() * labels.size(0)
+        total += labels.size(0)
+
+    return loss_sum / max(total, 1)
+
+
+def write_header(path: Path, fieldnames: list[str]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("w", newline="") as handle:
+        csv.DictWriter(handle, fieldnames=fieldnames).writeheader()
+
+
+def append_row(path: Path, fieldnames: list[str], row: dict[str, object]) -> None:
+    with path.open("a", newline="") as handle:
+        csv.DictWriter(handle, fieldnames=fieldnames).writerow(row)
+
+
+def base_metadata(cfg: Config, *, name: str, epoch: int) -> dict[str, object]:
+    return {
+        "cfg": asdict(cfg),
+        "name": name,
+        "epoch": int(epoch),
+        "checkpoint_selection_split": "CIFAR10 train-derived validation split",
+        "split_file": str(Path(cfg.split_file).expanduser().resolve()),
+        "official_test_used_for_selection": False,
+    }
+
+
+def train_vanilla(cfg: Config, train_base: IndexedSubset, val_base: IndexedSubset) -> None:
+    model = make_resnet18_cifar10().to(cfg.device)
+    optimizer = optim.SGD(
+        model.parameters(),
+        lr=cfg.lr,
+        momentum=cfg.momentum,
+        weight_decay=cfg.weight_decay,
+    )
+    scheduler = optim.lr_scheduler.MultiStepLR(
+        optimizer,
+        milestones=[50, 75],
+        gamma=0.1,
+    )
+
+    train_loader = make_loader(CleanPairDataset(train_base), cfg, shuffle=True)
+    val_loader = make_loader(CleanPairDataset(val_base), cfg, shuffle=False)
+
+    csv_path = Path(cfg.out_dir) / "log_vanilla.csv"
+    save_path = Path(cfg.out_dir) / "vanilla_resnet18_cifar10.pt"
+    fields = ["epoch", "lr", "train_loss", "val_clean_acc", "val_clean_loss"]
+    write_header(csv_path, fields)
+
+    best_val_acc = -1.0
+    for epoch in range(1, cfg.epochs + 1):
+        train_loss = train_one_epoch(model, train_loader, optimizer, cfg.device)
+        val_acc, val_loss = evaluate(model, val_loader, cfg.device)
+        scheduler.step()
+        lr_now = scheduler.get_last_lr()[0]
+
+        append_row(
+            csv_path,
+            fields,
             {
                 "epoch": epoch,
+                "lr": lr_now,
                 "train_loss": train_loss,
-                "clean_acc": test_acc,
-                "clean_loss": test_loss,
-                "tsr": 0.0,
-                "tsr_loss": 0.0,
-            }
+                "val_clean_acc": val_acc,
+                "val_clean_loss": val_loss,
+            },
         )
 
-        print(f"[VANILLA] epoch={epoch:03d} train_loss={train_loss:.4f} test_acc={test_acc:.4f} test_loss={test_loss:.4f}")
+        if val_acc > best_val_acc:
+            best_val_acc = val_acc
+            metadata = base_metadata(cfg, name="vanilla", epoch=epoch)
+            metadata.update(
+                {
+                    "selection_metric": "validation_clean_accuracy",
+                    "validation_metrics": {
+                        "clean_acc": float(val_acc),
+                        "clean_loss": float(val_loss),
+                    },
+                }
+            )
+            save_patch_model(save_path, model, metadata)
 
-        if test_acc > best_acc:
-            best_acc = test_acc
-            torch.save({"model": model.state_dict(), "cfg": cfg.__dict__}, save_path)
+        print(
+            f"[VANILLA] epoch={epoch:03d} train_loss={train_loss:.4f} "
+            f"val_clean_acc={val_acc:.2f}% val_clean_loss={val_loss:.4f}"
+        )
 
-    print(f"[VANILLA] saved best model to: {save_path} (best_acc={best_acc:.4f})")
-    print(f"[VANILLA] CSV log saved to: {csv_path}")
-    return save_path
+    print(f"[VANILLA] selected checkpoint: {save_path} | best val acc={best_val_acc:.2f}%")
 
-def train_watermarked(cfg: TrainConfig, name: str, trigger_fn: Callable[[torch.Tensor], torch.Tensor],) -> str:
-    ensure_dir(cfg.out_dir)
-    save_path = os.path.join(cfg.out_dir, f"wm_{name}_resnet18_cifar10.pt")
-    csv_path = os.path.join(cfg.out_dir, f"log_{name}.csv")
 
+def train_watermarked(
+    cfg: Config,
+    train_base: IndexedSubset,
+    val_base: IndexedSubset,
+    trigger_type: str,
+) -> None:
     model = make_resnet18_cifar10().to(cfg.device)
-    opt = optim.SGD(model.parameters(), lr=cfg.lr, momentum=cfg.momentum, weight_decay=cfg.weight_decay)
-    scheduler = optim.lr_scheduler.MultiStepLR(opt, milestones=[50, 75], gamma=0.1)  # for 100 epochs
-
-    train_set, test_set, _, test_loader = make_loaders(cfg)
-
-    wm_train_set = WatermarkDataset(
-        base=train_set,
-        trigger_fn=trigger_fn,
-        poison_rate=cfg.poison_rate,
-        target_label=cfg.target_label,
+    optimizer = optim.SGD(
+        model.parameters(),
+        lr=cfg.lr,
+        momentum=cfg.momentum,
+        weight_decay=cfg.weight_decay,
     )
-    wm_train_loader = DataLoader(
-        wm_train_set, batch_size=cfg.batch_size, shuffle=True,
-        num_workers=cfg.num_workers, pin_memory=True
+    scheduler = optim.lr_scheduler.MultiStepLR(
+        optimizer,
+        milestones=[50, 75],
+        gamma=0.1,
     )
 
-    trigger_set = TriggerSet(
-        base=test_set,
-        trigger_fn=trigger_fn,
-        target_label=cfg.target_label,
-        size=cfg.trigger_set_size,
+    training_trigger = make_patch_trigger(
+        trigger_type,
+        cfg.patch_size,
+        cfg.alpha,
+        deterministic_seed=cfg.seed,
     )
-    trigger_loader = DataLoader(
-        trigger_set, batch_size=cfg.batch_size, shuffle=False,
-        num_workers=cfg.num_workers, pin_memory=True
+    validation_trigger = make_patch_trigger(
+        trigger_type,
+        cfg.patch_size,
+        cfg.alpha,
+        deterministic_seed=cfg.validation_trigger_seed,
     )
 
-    logger = CSVLogger(
-        csv_path,
-        fieldnames=[
-            "epoch",
-            "train_loss",
-            "clean_acc",
-            "clean_loss",
-            "tsr",
-            "tsr_loss",
-        ],
+    train_loader = make_loader(
+        PatchWatermarkTrainingDataset(
+            train_base,
+            training_trigger,
+            cfg.poison_rate,
+            cfg.target_label,
+        ),
+        cfg,
+        shuffle=True,
     )
+    val_clean_loader = make_loader(CleanPairDataset(val_base), cfg, shuffle=False)
+    val_trigger_loader = make_loader(
+        ValidationTriggerDataset(val_base, validation_trigger, cfg.target_label),
+        cfg,
+        shuffle=False,
+    )
+
+    stem = trigger_type
+    csv_path = Path(cfg.out_dir) / f"log_{stem}.csv"
+    save_path = Path(cfg.out_dir) / f"wm_{stem}_resnet18_cifar10.pt"
+    fields = [
+        "epoch",
+        "lr",
+        "train_loss",
+        "val_clean_acc",
+        "val_clean_loss",
+        "val_tsr",
+        "val_tsr_loss",
+        "selection_score_hmean",
+    ]
+    write_header(csv_path, fields)
 
     best_score = -1.0
     for epoch in range(1, cfg.epochs + 1):
-        train_loss = train_one_epoch(model, wm_train_loader, opt, cfg.device)
-
-        # Clean test metrics
-        clean_acc, clean_loss = evaluate_acc_and_loss(model, test_loader, cfg.device)
-
-        # Trigger-set metrics
-        asr, asr_loss = evaluate_acc_and_loss(model, trigger_loader, cfg.device)
-
+        train_loss = train_one_epoch(model, train_loader, optimizer, cfg.device)
+        val_clean_acc, val_clean_loss = evaluate(model, val_clean_loader, cfg.device)
+        val_tsr, val_tsr_loss = evaluate(model, val_trigger_loader, cfg.device)
+        score = harmonic_mean(val_clean_acc, val_tsr)
         scheduler.step()
+        lr_now = scheduler.get_last_lr()[0]
 
-        logger.log(
+        append_row(
+            csv_path,
+            fields,
             {
                 "epoch": epoch,
+                "lr": lr_now,
                 "train_loss": train_loss,
-                "clean_acc": clean_acc,
-                "clean_loss": clean_loss,
-                "tsr": asr,
-                "tsr_loss": asr_loss,
-            }
+                "val_clean_acc": val_clean_acc,
+                "val_clean_loss": val_clean_loss,
+                "val_tsr": val_tsr,
+                "val_tsr_loss": val_tsr_loss,
+                "selection_score_hmean": score,
+            },
         )
 
-        print(
-            f"[WM:{name}] epoch={epoch:03d} "
-            f"train_loss={train_loss:.4f} "
-            f"clean_acc={clean_acc:.4f} clean_loss={clean_loss:.4f} "
-            f"TSR={asr:.4f} TSR_loss={asr_loss:.4f}"
-        )
-
-        score = asr - max(0.0, (0.85 - clean_acc))
         if score > best_score:
             best_score = score
-            torch.save(
-                {"model": model.state_dict(), "cfg": cfg.__dict__, "name": name, "best_score": best_score},
-                save_path,
+            metadata = base_metadata(cfg, name=stem, epoch=epoch)
+            metadata.update(
+                {
+                    "selection_metric": "harmonic_mean_validation_clean_acc_and_tsr",
+                    "selection_score": float(score),
+                    "validation_metrics": {
+                        "clean_acc": float(val_clean_acc),
+                        "clean_loss": float(val_clean_loss),
+                        "tsr": float(val_tsr),
+                        "tsr_loss": float(val_tsr_loss),
+                    },
+                }
             )
+            save_patch_model(save_path, model, metadata)
 
-    print(f"[WM:{name}] saved best model to: {save_path}")
-    print(f"[WM:{name}] CSV log saved to: {csv_path}")
-    return save_path
+        print(
+            f"[{stem}] epoch={epoch:03d} train_loss={train_loss:.4f} "
+            f"val_clean={val_clean_acc:.2f}% val_TSR={val_tsr:.2f}% "
+            f"hmean={score:.2f}"
+        )
 
-# ========== Main: Train vanilla + 4 watermarked models ==========
-def main():
-    import argparse
+    print(f"[{stem}] selected checkpoint: {save_path} | best hmean={best_score:.2f}")
+
+
+def parse_args() -> Config:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--device", type=str, default=None, help="cuda or cpu")
-    parser.add_argument("--epochs", type=int, default=None)
-    parser.add_argument("--poison_rate", type=float, default=None)
-    parser.add_argument("--target_label", type=int, default=None)
-    parser.add_argument("--patch_size", type=int, default=None)
-    parser.add_argument("--alpha", type=float, default=None)
-    parser.add_argument("--out_dir", type=str, default=None)
+    parser.add_argument("--data-root", default="./data")
+    parser.add_argument("--out-dir", default="./patch_trigger/run/training")
+    parser.add_argument("--split-file", default="./splits/cifar10_train_val_seed42.pt")
+    parser.add_argument("--split-seed", type=int, default=42)
+    parser.add_argument("--val-per-class", type=int, default=500)
+    parser.add_argument("--seed", type=int, default=42)
+    parser.add_argument("--device", default="cuda" if torch.cuda.is_available() else "cpu")
+    parser.add_argument("--epochs", type=int, default=100)
+    parser.add_argument("--batch-size", type=int, default=128)
+    parser.add_argument("--num-workers", type=int, default=4)
+    parser.add_argument("--lr", type=float, default=0.1)
+    parser.add_argument("--momentum", type=float, default=0.9)
+    parser.add_argument("--weight-decay", type=float, default=5e-4)
+    parser.add_argument("--poison-rate", "--poison_rate", type=float, default=0.05)
+    parser.add_argument("--target-label", "--target_label", type=int, default=0)
+    parser.add_argument("--patch-size", "--patch_size", type=int, default=6)
+    parser.add_argument("--alpha", type=float, default=0.35)
+    parser.add_argument("--validation-trigger-seed", type=int, default=999)
     args = parser.parse_args()
+    return Config(**vars(args))
 
-    cfg = TrainConfig()
-    if args.device is not None: cfg.device = args.device
-    if args.epochs is not None: cfg.epochs = args.epochs
-    if args.poison_rate is not None: cfg.poison_rate = args.poison_rate
-    if args.target_label is not None: cfg.target_label = args.target_label
-    if args.patch_size is not None: cfg.patch_size = args.patch_size
-    if args.alpha is not None: cfg.alpha = args.alpha
-    if args.out_dir is not None: cfg.out_dir = args.out_dir
 
+def main() -> None:
+    cfg = parse_args()
     set_seed(cfg.seed)
-    ensure_dir(cfg.out_dir)
-    print("Config:", cfg)
+    Path(cfg.out_dir).mkdir(parents=True, exist_ok=True)
 
-    # 1) Vanilla
-    train_vanilla(cfg)
+    train_base, val_base = make_datasets(cfg)
+    print(f"Device: {cfg.device}")
+    print(f"Train size: {len(train_base)} | Validation size: {len(val_base)}")
+    print("Official CIFAR-10 test split is not loaded by this training script.")
 
-    # 2) Watermarked: 4 trojan types (each separate model)
-    trig_static = make_static_visible_patch_trigger(cfg.patch_size, corner="br")
-    trig_alpha  = make_alpha_blended_patch_trigger(cfg.patch_size, alpha=cfg.alpha, corner="br")
-    trig_randloc = make_random_location_patch_trigger(cfg.patch_size, alpha=None)
-    trig_randshape = make_random_shape_patch_trigger(cfg.patch_size, alpha=None, random_location=True)
+    train_vanilla(cfg, train_base, val_base)
+    for trigger_type in (
+        "patch_static_visible",
+        "patch_alpha_blended",
+        "patch_random_location",
+        "patch_random_shape",
+    ):
+        train_watermarked(cfg, train_base, val_base, trigger_type)
 
-    train_watermarked(cfg, "patch_static_visible", trig_static)
-    train_watermarked(cfg, "patch_alpha_blended", trig_alpha)
-    train_watermarked(cfg, "patch_random_location", trig_randloc)
-    train_watermarked(cfg, "patch_random_shape", trig_randshape)
-
-    print("\nDone. Checkpoints saved in:", cfg.out_dir)
 
 if __name__ == "__main__":
     main()
