@@ -3,14 +3,14 @@
 This module contains the parts of the protocol that should remain identical
 across patch-based, warping-based, and input-aware watermark experiments:
 
-- loading and validating the common CIFAR-10 verification index file;
-- constructing the exact 9,000-image non-target verification set;
-- deterministic DataLoader creation;
-- clean/trigger accuracy and average cross-entropy calculation;
-- common input transformations;
-- generic clean-data training helpers;
-- global unstructured L1 pruning helpers;
-- CSV helpers.
+- loading and validating the common CIFAR-10 verification index file
+- constructing the exact 9,000-image non-target verification set
+- deterministic DataLoader creation
+- clean/trigger accuracy and average cross-entropy calculation
+- common input transformations
+- generic clean-data training helpers
+- global unstructured L1 pruning helpers
+- CSV helpers
 
 Trigger generation and checkpoint reconstruction remain in each trigger
 family's own utilities module.
