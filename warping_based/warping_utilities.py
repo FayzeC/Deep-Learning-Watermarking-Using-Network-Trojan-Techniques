@@ -1,9 +1,6 @@
 """Utilities shared by WaNet evaluation and robustness scripts.
-
-The original WaNet training script is intentionally left unchanged.  This
-module reconstructs the trained classifier, loads the exact saved warping grid,
-and exposes the method-specific operations needed by the standardised testing
-scripts.
+This module reconstructs the trained classifier, loads the exact saved warping grid,
+and exposes the method-specific operations needed by the standardised testing scripts.
 """
 
 from __future__ import annotations
