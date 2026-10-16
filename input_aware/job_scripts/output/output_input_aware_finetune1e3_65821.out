@@ -1,0 +1,11 @@
+Files already downloaded and verified
+Files already downloaded and verified
+epoch=001 clean_acc=93.92% TSR=37.97%
+epoch=005 clean_acc=94.05% TSR=30.44%
+epoch=010 clean_acc=93.93% TSR=23.23%
+epoch=025 clean_acc=94.14% TSR=11.24%
+epoch=050 clean_acc=94.24% TSR=5.20%
+epoch=075 clean_acc=94.16% TSR=3.66%
+epoch=100 clean_acc=94.14% TSR=4.67%
+Saved: input_aware/run/finetuning/lr1e-3/ftal_best_model_lr1e-03.csv
+Saved: input_aware/run/finetuning/lr1e-3/ftal_summary_lr1e-03.csv

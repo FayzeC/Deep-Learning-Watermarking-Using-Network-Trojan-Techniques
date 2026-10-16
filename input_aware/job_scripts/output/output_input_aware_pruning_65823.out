@@ -1,0 +1,6 @@
+Files already downloaded and verified
+sparsity=10% actual=10.00% clean_acc=93.98% TSR=99.42%
+sparsity=30% actual=30.00% clean_acc=93.94% TSR=99.29%
+sparsity=50% actual=50.00% clean_acc=93.97% TSR=98.82%
+sparsity=70% actual=70.00% clean_acc=93.61% TSR=98.93%
+Saved: /tc1home/FYP/faye0004/FYP/input_aware/run/pruning/pruning_summary.csv

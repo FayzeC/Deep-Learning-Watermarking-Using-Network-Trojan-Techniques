@@ -1,0 +1,14 @@
+Files already downloaded and verified
+none                 clean_acc=93.98% TSR=99.42% tsr_drop=0.00 pp
+crop_resize_r0.9     clean_acc=87.69% TSR=84.18% tsr_drop=15.24 pp
+crop_resize_r0.8     clean_acc=81.95% TSR=61.61% tsr_drop=37.81 pp
+crop_resize_r0.7     clean_acc=67.56% TSR=24.78% tsr_drop=74.64 pp
+resize_down24        clean_acc=73.05% TSR=50.88% tsr_drop=48.54 pp
+resize_down16        clean_acc=29.82% TSR=4.70% tsr_drop=94.72 pp
+jpeg_q90             clean_acc=90.28% TSR=79.41% tsr_drop=20.01 pp
+jpeg_q70             clean_acc=82.40% TSR=39.49% tsr_drop=59.93 pp
+jpeg_q50             clean_acc=75.05% TSR=11.69% tsr_drop=87.73 pp
+blur_k3_s0.5         clean_acc=92.05% TSR=98.93% tsr_drop=0.49 pp
+blur_k5_s1.0         clean_acc=37.22% TSR=11.58% tsr_drop=87.84 pp
+blur_k7_s1.5         clean_acc=20.84% TSR=10.90% tsr_drop=88.52 pp
+Saved: /tc1home/FYP/faye0004/FYP/input_aware/run/input_transformation/input_transform_summary.csv

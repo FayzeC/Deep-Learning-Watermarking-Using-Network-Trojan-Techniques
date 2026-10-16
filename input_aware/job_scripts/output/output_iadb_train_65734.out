@@ -1,0 +1,113 @@
+Files already downloaded and verified
+Files already downloaded and verified
+Files already downloaded and verified
+Files already downloaded and verified
+Device: cuda
+Train size: 45000 | Validation size: 5000
+Official CIFAR-10 test split is not loaded by this training script.
+Mask warmup 001/5: loss=6.2118
+Mask warmup 002/5: loss=3.8497
+Mask warmup 003/5: loss=3.7740
+Mask warmup 004/5: loss=3.8165
+Mask warmup 005/5: loss=3.7444
+Epoch 001/100 | train_loss=2.8182 | val_clean=36.98% | val_TSR=6.04% | cross_acc=36.52% | hmean=10.38
+Epoch 002/100 | train_loss=2.1446 | val_clean=46.64% | val_TSR=68.18% | cross_acc=30.88% | hmean=55.39
+Epoch 003/100 | train_loss=1.8057 | val_clean=63.52% | val_TSR=87.36% | cross_acc=33.36% | hmean=73.56
+Epoch 004/100 | train_loss=1.5669 | val_clean=67.20% | val_TSR=66.26% | cross_acc=51.36% | hmean=66.73
+Epoch 005/100 | train_loss=1.4079 | val_clean=73.16% | val_TSR=80.72% | cross_acc=49.16% | hmean=76.75
+Epoch 006/100 | train_loss=1.3050 | val_clean=74.08% | val_TSR=66.24% | cross_acc=60.44% | hmean=69.94
+Epoch 007/100 | train_loss=1.2307 | val_clean=77.30% | val_TSR=74.38% | cross_acc=61.38% | hmean=75.81
+Epoch 008/100 | train_loss=1.1766 | val_clean=72.68% | val_TSR=71.88% | cross_acc=57.90% | hmean=72.28
+Epoch 009/100 | train_loss=1.1598 | val_clean=78.62% | val_TSR=89.30% | cross_acc=55.50% | hmean=83.62
+Epoch 010/100 | train_loss=1.1157 | val_clean=76.88% | val_TSR=79.00% | cross_acc=60.46% | hmean=77.93
+Epoch 011/100 | train_loss=1.1028 | val_clean=77.92% | val_TSR=90.96% | cross_acc=54.34% | hmean=83.94
+Epoch 012/100 | train_loss=1.0880 | val_clean=80.82% | val_TSR=85.44% | cross_acc=60.96% | hmean=83.07
+Epoch 013/100 | train_loss=1.0604 | val_clean=80.66% | val_TSR=85.18% | cross_acc=61.30% | hmean=82.86
+Epoch 014/100 | train_loss=1.0516 | val_clean=77.58% | val_TSR=72.74% | cross_acc=63.66% | hmean=75.08
+Epoch 015/100 | train_loss=1.0491 | val_clean=81.36% | val_TSR=70.12% | cross_acc=67.98% | hmean=75.32
+Epoch 016/100 | train_loss=1.0297 | val_clean=80.48% | val_TSR=78.70% | cross_acc=65.64% | hmean=79.58
+Epoch 017/100 | train_loss=1.0093 | val_clean=79.10% | val_TSR=93.02% | cross_acc=59.22% | hmean=85.50
+Epoch 018/100 | train_loss=1.0091 | val_clean=82.24% | val_TSR=84.04% | cross_acc=67.20% | hmean=83.13
+Epoch 019/100 | train_loss=0.9986 | val_clean=83.30% | val_TSR=67.42% | cross_acc=70.28% | hmean=74.52
+Epoch 020/100 | train_loss=0.9973 | val_clean=83.70% | val_TSR=90.32% | cross_acc=65.84% | hmean=86.88
+Epoch 021/100 | train_loss=0.9823 | val_clean=76.22% | val_TSR=91.54% | cross_acc=51.44% | hmean=83.18
+Epoch 022/100 | train_loss=0.9941 | val_clean=83.12% | val_TSR=69.24% | cross_acc=73.88% | hmean=75.55
+Epoch 023/100 | train_loss=0.9713 | val_clean=82.88% | val_TSR=79.46% | cross_acc=69.70% | hmean=81.13
+Epoch 024/100 | train_loss=0.9696 | val_clean=83.96% | val_TSR=91.48% | cross_acc=66.40% | hmean=87.56
+Epoch 025/100 | train_loss=0.9571 | val_clean=80.76% | val_TSR=94.84% | cross_acc=59.78% | hmean=87.24
+Epoch 026/100 | train_loss=0.9673 | val_clean=80.06% | val_TSR=74.52% | cross_acc=68.48% | hmean=77.19
+Epoch 027/100 | train_loss=0.9559 | val_clean=82.72% | val_TSR=69.32% | cross_acc=72.90% | hmean=75.43
+Epoch 028/100 | train_loss=0.9643 | val_clean=80.96% | val_TSR=92.46% | cross_acc=62.82% | hmean=86.33
+Epoch 029/100 | train_loss=4.1245 | val_clean=82.38% | val_TSR=87.36% | cross_acc=66.08% | hmean=84.80
+Epoch 030/100 | train_loss=0.9438 | val_clean=79.84% | val_TSR=89.80% | cross_acc=61.18% | hmean=84.53
+Epoch 031/100 | train_loss=0.9490 | val_clean=84.04% | val_TSR=87.18% | cross_acc=64.22% | hmean=85.58
+Epoch 032/100 | train_loss=0.9485 | val_clean=84.34% | val_TSR=75.20% | cross_acc=72.14% | hmean=79.51
+Epoch 033/100 | train_loss=0.9485 | val_clean=80.24% | val_TSR=71.56% | cross_acc=68.36% | hmean=75.65
+Epoch 034/100 | train_loss=0.9369 | val_clean=83.38% | val_TSR=90.98% | cross_acc=66.70% | hmean=87.01
+Epoch 035/100 | train_loss=0.9362 | val_clean=83.30% | val_TSR=90.02% | cross_acc=67.82% | hmean=86.53
+Epoch 036/100 | train_loss=0.9454 | val_clean=84.32% | val_TSR=86.10% | cross_acc=71.60% | hmean=85.20
+Epoch 037/100 | train_loss=0.9307 | val_clean=81.00% | val_TSR=87.38% | cross_acc=59.60% | hmean=84.07
+Epoch 038/100 | train_loss=0.9272 | val_clean=80.14% | val_TSR=90.68% | cross_acc=62.76% | hmean=85.08
+Epoch 039/100 | train_loss=0.9284 | val_clean=85.06% | val_TSR=91.04% | cross_acc=67.44% | hmean=87.95
+Epoch 040/100 | train_loss=0.9346 | val_clean=74.12% | val_TSR=93.76% | cross_acc=54.94% | hmean=82.79
+Epoch 041/100 | train_loss=0.9294 | val_clean=86.50% | val_TSR=91.36% | cross_acc=68.82% | hmean=88.86
+Epoch 042/100 | train_loss=0.9256 | val_clean=83.24% | val_TSR=89.74% | cross_acc=64.74% | hmean=86.37
+Epoch 043/100 | train_loss=0.9222 | val_clean=83.50% | val_TSR=86.86% | cross_acc=67.50% | hmean=85.15
+Epoch 044/100 | train_loss=0.9222 | val_clean=81.08% | val_TSR=89.48% | cross_acc=62.98% | hmean=85.07
+Epoch 045/100 | train_loss=0.9248 | val_clean=85.92% | val_TSR=93.28% | cross_acc=68.48% | hmean=89.45
+Epoch 046/100 | train_loss=0.9255 | val_clean=80.52% | val_TSR=95.22% | cross_acc=61.34% | hmean=87.26
+Epoch 047/100 | train_loss=0.9222 | val_clean=85.72% | val_TSR=88.54% | cross_acc=70.38% | hmean=87.11
+Epoch 048/100 | train_loss=0.9130 | val_clean=83.60% | val_TSR=88.22% | cross_acc=63.70% | hmean=85.85
+Epoch 049/100 | train_loss=0.9152 | val_clean=83.60% | val_TSR=89.90% | cross_acc=64.74% | hmean=86.64
+Epoch 050/100 | train_loss=0.9227 | val_clean=84.96% | val_TSR=85.36% | cross_acc=68.02% | hmean=85.16
+Epoch 051/100 | train_loss=0.7579 | val_clean=91.96% | val_TSR=98.00% | cross_acc=78.20% | hmean=94.88
+Epoch 052/100 | train_loss=0.6991 | val_clean=92.28% | val_TSR=97.76% | cross_acc=81.66% | hmean=94.94
+Epoch 053/100 | train_loss=0.6829 | val_clean=92.76% | val_TSR=97.70% | cross_acc=81.44% | hmean=95.17
+Epoch 054/100 | train_loss=0.6718 | val_clean=92.72% | val_TSR=97.86% | cross_acc=83.04% | hmean=95.22
+Epoch 055/100 | train_loss=0.6576 | val_clean=92.78% | val_TSR=97.02% | cross_acc=85.34% | hmean=94.85
+Epoch 056/100 | train_loss=0.6453 | val_clean=93.06% | val_TSR=98.46% | cross_acc=82.70% | hmean=95.68
+Epoch 057/100 | train_loss=0.6379 | val_clean=93.28% | val_TSR=97.40% | cross_acc=84.72% | hmean=95.30
+Epoch 058/100 | train_loss=0.6374 | val_clean=93.22% | val_TSR=98.84% | cross_acc=82.56% | hmean=95.95
+Epoch 059/100 | train_loss=0.6239 | val_clean=93.16% | val_TSR=97.66% | cross_acc=84.54% | hmean=95.36
+Epoch 060/100 | train_loss=0.6216 | val_clean=92.78% | val_TSR=97.24% | cross_acc=84.46% | hmean=94.96
+Epoch 061/100 | train_loss=0.6176 | val_clean=93.20% | val_TSR=97.68% | cross_acc=83.54% | hmean=95.39
+Epoch 062/100 | train_loss=0.6132 | val_clean=92.98% | val_TSR=98.76% | cross_acc=83.38% | hmean=95.78
+Epoch 063/100 | train_loss=0.6131 | val_clean=93.22% | val_TSR=97.86% | cross_acc=85.22% | hmean=95.48
+Epoch 064/100 | train_loss=0.6092 | val_clean=92.92% | val_TSR=97.84% | cross_acc=84.94% | hmean=95.32
+Epoch 065/100 | train_loss=0.6021 | val_clean=92.86% | val_TSR=95.42% | cross_acc=86.78% | hmean=94.12
+Epoch 066/100 | train_loss=0.6033 | val_clean=92.98% | val_TSR=97.90% | cross_acc=85.16% | hmean=95.38
+Epoch 067/100 | train_loss=0.6009 | val_clean=93.14% | val_TSR=97.12% | cross_acc=84.96% | hmean=95.09
+Epoch 068/100 | train_loss=0.6007 | val_clean=92.80% | val_TSR=99.02% | cross_acc=82.26% | hmean=95.81
+Epoch 069/100 | train_loss=0.5981 | val_clean=92.82% | val_TSR=99.16% | cross_acc=83.14% | hmean=95.89
+Epoch 070/100 | train_loss=0.5992 | val_clean=93.20% | val_TSR=98.30% | cross_acc=82.70% | hmean=95.68
+Epoch 071/100 | train_loss=0.5996 | val_clean=93.34% | val_TSR=98.66% | cross_acc=84.00% | hmean=95.93
+Epoch 072/100 | train_loss=0.5988 | val_clean=92.80% | val_TSR=98.04% | cross_acc=82.92% | hmean=95.35
+Epoch 073/100 | train_loss=0.5981 | val_clean=93.12% | val_TSR=98.86% | cross_acc=82.26% | hmean=95.90
+Epoch 074/100 | train_loss=0.5920 | val_clean=93.08% | val_TSR=98.22% | cross_acc=83.96% | hmean=95.58
+Epoch 075/100 | train_loss=0.5976 | val_clean=92.76% | val_TSR=93.40% | cross_acc=86.82% | hmean=93.08
+Epoch 076/100 | train_loss=0.5808 | val_clean=93.76% | val_TSR=98.66% | cross_acc=86.96% | hmean=96.15
+Epoch 077/100 | train_loss=0.5712 | val_clean=93.80% | val_TSR=98.28% | cross_acc=87.70% | hmean=95.99
+Epoch 078/100 | train_loss=0.5651 | val_clean=93.84% | val_TSR=98.90% | cross_acc=87.20% | hmean=96.30
+Epoch 079/100 | train_loss=0.5650 | val_clean=94.00% | val_TSR=98.92% | cross_acc=87.42% | hmean=96.40
+Epoch 080/100 | train_loss=0.5652 | val_clean=93.96% | val_TSR=98.78% | cross_acc=87.78% | hmean=96.31
+Epoch 081/100 | train_loss=0.5609 | val_clean=94.02% | val_TSR=98.98% | cross_acc=87.14% | hmean=96.44
+Epoch 082/100 | train_loss=0.5604 | val_clean=94.12% | val_TSR=98.88% | cross_acc=87.72% | hmean=96.44
+Epoch 083/100 | train_loss=0.5607 | val_clean=94.32% | val_TSR=98.98% | cross_acc=87.60% | hmean=96.59
+Epoch 084/100 | train_loss=0.5587 | val_clean=94.24% | val_TSR=98.76% | cross_acc=88.00% | hmean=96.45
+Epoch 085/100 | train_loss=0.5552 | val_clean=94.18% | val_TSR=99.02% | cross_acc=87.96% | hmean=96.54
+Epoch 086/100 | train_loss=0.5590 | val_clean=94.24% | val_TSR=99.08% | cross_acc=88.02% | hmean=96.60
+Epoch 087/100 | train_loss=0.5566 | val_clean=94.06% | val_TSR=98.80% | cross_acc=88.30% | hmean=96.37
+Epoch 088/100 | train_loss=0.5569 | val_clean=94.16% | val_TSR=98.58% | cross_acc=88.50% | hmean=96.32
+Epoch 089/100 | train_loss=0.5534 | val_clean=94.12% | val_TSR=99.26% | cross_acc=87.44% | hmean=96.62
+Epoch 090/100 | train_loss=0.5561 | val_clean=93.90% | val_TSR=98.94% | cross_acc=87.82% | hmean=96.35
+Epoch 091/100 | train_loss=0.5551 | val_clean=94.12% | val_TSR=99.30% | cross_acc=87.80% | hmean=96.64
+Epoch 092/100 | train_loss=0.5539 | val_clean=94.26% | val_TSR=99.14% | cross_acc=88.16% | hmean=96.64
+Epoch 093/100 | train_loss=0.5542 | val_clean=94.18% | val_TSR=99.06% | cross_acc=88.32% | hmean=96.56
+Epoch 094/100 | train_loss=0.5543 | val_clean=94.00% | val_TSR=99.34% | cross_acc=87.98% | hmean=96.60
+Epoch 095/100 | train_loss=0.5544 | val_clean=93.96% | val_TSR=99.22% | cross_acc=88.26% | hmean=96.52
+Epoch 096/100 | train_loss=0.5532 | val_clean=94.06% | val_TSR=99.28% | cross_acc=88.30% | hmean=96.60
+Epoch 097/100 | train_loss=0.5509 | val_clean=94.02% | val_TSR=99.48% | cross_acc=87.56% | hmean=96.67
+Epoch 098/100 | train_loss=0.5528 | val_clean=94.04% | val_TSR=99.24% | cross_acc=88.04% | hmean=96.57
+Epoch 099/100 | train_loss=0.5521 | val_clean=94.08% | val_TSR=99.02% | cross_acc=88.26% | hmean=96.49
+Epoch 100/100 | train_loss=0.5531 | val_clean=94.24% | val_TSR=99.24% | cross_acc=88.22% | hmean=96.68
+Selected checkpoint: /tc1home/FYP/faye0004/FYP/input_aware/run/training/best_model.pt

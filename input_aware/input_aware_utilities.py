@@ -1,7 +1,5 @@
 """Utilities shared by input-aware evaluation and robustness scripts.
-
-The original input-aware training script is intentionally left unchanged. This
-module reconstructs the retained classifier, trigger generator, and mask
+This module reconstructs the retained classifier, trigger generator, and mask
 generator from ``best_model.pt`` and exposes only the method-specific operations
 needed by the standardised testing scripts.
 

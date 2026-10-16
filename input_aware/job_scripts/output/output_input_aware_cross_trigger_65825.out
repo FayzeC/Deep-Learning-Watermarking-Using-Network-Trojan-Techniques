@@ -1,0 +1,8 @@
+Files already downloaded and verified
+Checkpoint: /tc1home/FYP/faye0004/FYP/input_aware/run/training/best_model.pt
+Clean accuracy: 93.98%
+Paired-trigger TSR: 99.42%
+Cross-trigger original-label accuracy: 87.57%
+Cross-trigger target activation rate: 6.44%
+Cross-trigger samples: 9000
+Saved: /tc1home/FYP/faye0004/FYP/input_aware/run/cross_trigger/cross_trigger_summary.csv
